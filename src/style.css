@@ -2,6 +2,89 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Shared frame for all before/after media (sliders + videos) */
+.media-frame {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  min-height: 360px;
+}
+
+@media (min-width: 768px) {
+  .media-frame {
+    min-height: 440px;
+  }
+}
+
+/* Type scale aligned to notion.com/releases */
+.rn-h1 {
+  font-size: clamp(40px, 7vw, 64px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -2.125px;
+}
+
+.rn-h2 {
+  font-size: clamp(28px, 4.5vw, 42px);
+  font-weight: 700;
+  line-height: 1.142857; /* 48/42 */
+  letter-spacing: -1.5px;
+  margin-bottom: 32px;
+  color: rgba(48, 46, 45, 0.95);
+}
+
+.rn-lede {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: -0.125px;
+  color: rgba(48, 46, 45, 0.9);
+}
+
+.rn-body {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  color: rgba(48, 46, 45, 0.72);
+}
+
+.rn-body strong {
+  color: rgba(48, 46, 45, 0.95);
+  font-weight: 500;
+}
+
+.rn-note {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: rgba(48, 46, 45, 0.72);
+}
+
+.rn-note strong {
+  color: rgba(48, 46, 45, 0.95);
+  font-weight: 500;
+}
+
+.rn-section {
+  padding-top: 40px;
+  padding-bottom: 0;
+  margin-bottom: 128px;
+}
+
+.rn-section.rn-section-last {
+  margin-bottom: 0;
+}
+
+@media (max-width: 680px) {
+  .rn-section {
+    margin-bottom: 72px;
+    padding-top: 24px;
+  }
+
+  .rn-section.rn-section-last {
+    margin-bottom: 0;
+  }
+}
+
 :root {
   --hero-wash: #dde2ff;
   --hero-wash-soft: #f4f6ff;

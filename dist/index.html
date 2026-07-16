@@ -7,9 +7,9 @@
 <link rel="icon" type="image/png" href="/images/birdeye-mark.png?v=2">
 <link rel="apple-touch-icon" href="/images/birdeye-mark.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/assets/index-v2zAWQIw.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-BqEfKmmI.css">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/index-Dzu5rpio.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-pt_PATEE.css">
 </head>
 <body class="bg-white text-ink font-sans antialiased leading-relaxed">
 
@@ -30,13 +30,14 @@
 <!-- ── HERO ── -->
 <section class="hero-wash relative overflow-hidden">
   <div class="hero-glow pointer-events-none absolute inset-0" aria-hidden="true"></div>
-  <div class="relative mx-auto flex max-w-[760px] flex-col items-center px-6 pb-20 pt-20 text-center max-[680px]:pb-14 max-[680px]:pt-14">
+  <div class="relative mx-auto flex max-w-[920px] flex-col items-center px-6 pb-20 pt-20 text-center max-[680px]:pb-14 max-[680px]:pt-14">
     <div class="hero-fade hero-fade-2 mb-6 inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/70 px-3.5 py-1.5 text-[12px] font-medium tracking-[0.02px] text-ink shadow-[0_1px_2px_rgba(48,46,45,0.06)] backdrop-blur-sm">
       <span class="inline-block h-1.5 w-1.5 rounded-full bg-brand"></span>
       Coming August 2026 · AI Native
     </div>
-    <h1 class="hero-fade hero-fade-3 mb-9 max-w-[640px] text-[clamp(36px,5.5vw,56px)] font-semibold leading-[1.12] tracking-[-1.2px] text-ink">
-      A cleaner Birdeye.<br />Built for how you work next.
+    <h1 class="hero-fade hero-fade-3 rn-h1 mb-9 max-w-[900px] font-sans text-ink">
+      A cleaner Birdeye.<br />
+      <span class="whitespace-nowrap">Built for how you work next.</span>
     </h1>
     <a
       id="hero-preview"
@@ -51,27 +52,27 @@
 <div class="mx-auto max-w-[900px] px-6 pb-20" id="changes">
 
   <!-- ── 1. SYSTEM CTA ── -->
-  <div class="reveal grid grid-cols-1 items-start gap-4 py-12 md:grid-cols-[200px_1fr] md:gap-12" data-reveal>
+  <div class="reveal rn-section grid grid-cols-1 items-start gap-4 md:grid-cols-[200px_1fr] md:gap-12" data-reveal>
     <div>
       <span class="mb-3 inline-block rounded-full bg-[#E3F2FD] px-2.5 py-[3px] text-[11px] font-semibold tracking-[0.3px] text-[#1565C0]">Settings CTA</span>
     </div>
     <div>
-      <h2 class="mb-2.5 font-sans text-[22px] font-bold tracking-[-0.3px] text-ink">Settings CTAs move from top to bottom</h2>
-      <p class="mb-4 text-[15px] leading-[1.75] text-muted">
+      <h2 class="rn-h2 font-sans">Settings CTAs move from top to bottom</h2>
+      <p class="rn-body mb-6">
         Settings actions leave the crowded top header and settle into the <strong class="font-medium text-ink">left-rail footer</strong>. Create and Ask stay up top; settings, notifications, and profile move down.
       </p>
       <div class="mb-6 rounded-[10px] border border-border bg-[#F7F7F7] p-4">
         <div class="mb-1.5 text-[11px] font-bold uppercase tracking-[1.5px] text-faint">Why design needs this</div>
-        <ul class="m-0 list-disc space-y-1.5 pl-4 text-[14px] leading-[1.65] text-muted">
+        <ul class="rn-note m-0 list-disc space-y-2 pl-5">
           <li><strong class="font-medium text-ink">Clear workspace.</strong> Top chrome stays focused on create/ask; account and system tools stop competing with page content.</li>
           <li><strong class="font-medium text-ink">Thumb- and habit-friendly.</strong> Settings, notifications, and profile live in a stable bottom-rail destination users already expect in modern app shells.</li>
           <li><strong class="font-medium text-ink">Scalable system actions.</strong> New utilities can join the bottom cluster without growing the header into a dense icon strip.</li>
         </ul>
       </div>
       <div class="mt-2">
-        <div class="relative aspect-[1024/632] w-full cursor-ew-resize touch-none select-none overflow-hidden rounded-lg border border-border bg-white shadow-[0_4px_24px_rgba(0,0,0,0.10)]" id="s5">
+        <div class="media-frame relative cursor-ew-resize touch-none select-none overflow-hidden rounded-lg border border-border bg-white shadow-[0_4px_24px_rgba(0,0,0,0.10)]" id="s5">
           <!-- AFTER (base) -->
-          <div class="relative block h-full w-full">
+          <div class="absolute inset-0">
             <img src="/images/system-cta-after.png" width="1728" height="1065" alt="After: quieter top bar; settings, notifications, and profile in the left-rail footer" class="pointer-events-none h-full w-full object-cover object-left-top" />
           </div>
           <!-- BEFORE (clipped from left) -->
@@ -90,18 +91,18 @@
   </div>
 
   <!-- ── DRAWER IMPROVEMENTS ── -->
-  <div class="reveal grid grid-cols-1 items-start gap-4 py-12 md:grid-cols-[200px_1fr] md:gap-12" data-reveal>
+  <div class="reveal rn-section grid grid-cols-1 items-start gap-4 md:grid-cols-[200px_1fr] md:gap-12" data-reveal>
     <div>
       <span class="mb-3 inline-block rounded-full bg-[#E8EAF6] px-2.5 py-[3px] text-[11px] font-semibold tracking-[0.3px] text-[#3949AB]">Drawer</span>
     </div>
     <div>
-      <h2 class="mb-2.5 font-sans text-[22px] font-bold tracking-[-0.3px] text-ink">Drawer improvements</h2>
-      <p class="mb-4 text-[15px] leading-[1.75] text-muted">
+      <h2 class="rn-h2 font-sans">Drawer improvements</h2>
+      <p class="rn-body mb-6">
         Drawers open with clearer hierarchy, tighter spacing, and smoother motion — easier to scan and act without losing context of the page behind.
       </p>
       <div class="mb-6 rounded-[10px] border border-border bg-[#F7F7F7] p-4">
         <div class="mb-1.5 text-[11px] font-bold uppercase tracking-[1.5px] text-faint">Why design needs this</div>
-        <ul class="m-0 list-disc space-y-1.5 pl-4 text-[14px] leading-[1.65] text-muted">
+        <ul class="rn-note m-0 list-disc space-y-2 pl-5">
           <li><strong class="font-medium text-ink">Faster orientation.</strong> Stronger title, actions, and content rhythm so users know what to do in one glance.</li>
           <li><strong class="font-medium text-ink">Less visual noise.</strong> Refined panels keep focus on the task instead of chrome and dense controls.</li>
           <li><strong class="font-medium text-ink">Motion with purpose.</strong> Enter/exit feel intentional and calm — aligned with the AI Native experience.</li>
@@ -129,7 +130,7 @@
           >After</button>
         </div>
         <div class="overflow-hidden rounded-lg border border-border bg-[#111] shadow-[0_4px_24px_rgba(0,0,0,0.10)]">
-          <div class="relative aspect-[16/9] w-full min-h-[360px] md:min-h-[440px]">
+          <div class="media-frame relative">
             <video
               data-compare-player
               class="absolute inset-0 h-full w-full object-contain object-center"
@@ -150,18 +151,18 @@
   </div>
 
   <!-- ── L1 NAVIGATION ── -->
-  <div class="reveal grid grid-cols-1 items-start gap-4 py-12 md:grid-cols-[200px_1fr] md:gap-12" data-reveal>
+  <div class="reveal rn-section grid grid-cols-1 items-start gap-4 md:grid-cols-[200px_1fr] md:gap-12" data-reveal>
     <div>
       <span class="mb-3 inline-block rounded-full bg-[#E0F2F1] px-2.5 py-[3px] text-[11px] font-semibold tracking-[0.3px] text-[#00695C]">Navigation</span>
     </div>
     <div>
-      <h2 class="mb-2.5 font-sans text-[22px] font-bold tracking-[-0.3px] text-ink">Expand or collapse the left menu — same everywhere</h2>
-      <p class="mb-4 text-[15px] leading-[1.75] text-muted">
+      <h2 class="rn-h2 font-sans">Expand or collapse the left menu — same everywhere</h2>
+      <p class="rn-body mb-6">
         Open for full labels when you need them. Close for more screen space. One control, same behavior in every module.
       </p>
       <div class="mb-6 rounded-[10px] border border-border bg-[#F7F7F7] p-4">
         <div class="mb-1.5 text-[11px] font-bold uppercase tracking-[1.5px] text-faint">Why</div>
-        <ul class="m-0 list-disc space-y-1.5 pl-4 text-[14px] leading-[1.65] text-muted">
+        <ul class="rn-note m-0 list-disc space-y-2 pl-5">
           <li><strong class="font-medium text-ink">Your choice.</strong> Expand when learning the menu; collapse when deep in work.</li>
           <li><strong class="font-medium text-ink">Same in every module.</strong> No surprises jumping from Reviews to Listings to Inbox.</li>
           <li><strong class="font-medium text-ink">More room for content.</strong> Collapsed rail gives the page back without losing navigation.</li>
@@ -189,7 +190,7 @@
           >After</button>
         </div>
         <div class="overflow-hidden rounded-lg border border-border bg-[#111] shadow-[0_4px_24px_rgba(0,0,0,0.10)]">
-          <div class="relative aspect-[16/9] w-full min-h-[360px] md:min-h-[440px]">
+          <div class="media-frame relative">
             <video
               data-compare-player
               class="absolute inset-0 h-full w-full object-contain object-center"
@@ -210,14 +211,14 @@
   </div>
 
   <!-- ── BRANDING APPEARANCE ── -->
-  <div class="reveal grid grid-cols-1 items-start gap-4 py-12 md:grid-cols-[200px_1fr] md:gap-12" data-reveal>
+  <div class="reveal rn-section grid grid-cols-1 items-start gap-4 md:grid-cols-[200px_1fr] md:gap-12" data-reveal>
     <div>
       <span class="mb-3 inline-block rounded-full bg-[#EDEFFF] px-2.5 py-[3px] text-[11px] font-semibold tracking-[0.3px] text-[#4C5BD4]">Branding</span>
     </div>
     <div>
-      <h2 class="mb-4 font-sans text-[22px] font-bold tracking-[-0.3px] text-ink">Branding looks softer — blue moves from the top strip into the app background</h2>
-      <div class="relative aspect-[1024/639] w-full cursor-ew-resize touch-none select-none overflow-hidden rounded-lg border border-border bg-white shadow-[0_4px_24px_rgba(0,0,0,0.10)]" id="s6">
-        <div class="relative block h-full w-full">
+      <h2 class="rn-h2 font-sans">Branding looks softer — blue moves from the top strip into the app background</h2>
+      <div class="media-frame relative cursor-ew-resize touch-none select-none overflow-hidden rounded-lg border border-border bg-white shadow-[0_4px_24px_rgba(0,0,0,0.10)]" id="s6">
+        <div class="absolute inset-0">
           <img src="/images/branding-shell-after.png" width="1024" height="639" alt="After: soft brand blue shell background" class="pointer-events-none h-full w-full object-cover object-left-top" />
         </div>
         <div class="absolute inset-0 overflow-hidden" id="b6"><div class="absolute inset-0" id="bi6">
@@ -234,29 +235,29 @@
   </div>
 
   <!-- ── BRAND BLUE ── -->
-  <div class="reveal grid grid-cols-1 items-start gap-4 py-12 md:grid-cols-[200px_1fr] md:gap-12" data-reveal>
+  <div class="reveal rn-section grid grid-cols-1 items-start gap-4 md:grid-cols-[200px_1fr] md:gap-12" data-reveal>
     <div>
       <span class="mb-3 inline-block rounded-full bg-[#EDF5FF] px-2.5 py-[3px] text-[11px] font-semibold tracking-[0.3px] text-[#0F62FE]">Brand blue</span>
     </div>
     <div>
-      <h2 class="mb-2.5 font-sans text-[22px] font-bold tracking-[-0.3px] text-ink">From Material blue to IBM Blue</h2>
-      <p class="mb-4 text-[15px] leading-[1.75] text-muted">
+      <h2 class="rn-h2 font-sans">From Material blue to IBM Blue</h2>
+      <p class="rn-body mb-6">
         <strong class="font-medium text-ink">#1976D2</strong> → <strong class="font-medium text-ink">#0F62FE</strong> on buttons, links, focus, and accents.
       </p>
       <div class="mb-6 rounded-[10px] border border-border bg-[#F7F7F7] p-4">
         <div class="mb-1.5 text-[11px] font-bold uppercase tracking-[1.5px] text-faint">Why</div>
-        <ul class="m-0 list-disc space-y-1.5 pl-4 text-[14px] leading-[1.65] text-muted">
+        <ul class="rn-note m-0 list-disc space-y-2 pl-5">
           <li><strong class="font-medium text-ink">Looks better.</strong> Sharper and more confident on white UI.</li>
           <li><strong class="font-medium text-ink">Feels enterprise.</strong> Trust signal — not a Material default.</li>
           <li><strong class="font-medium text-ink">Clearer actions.</strong> CTAs and active states pop faster.</li>
           <li><strong class="font-medium text-ink">One system blue.</strong> Same accent across product and AI Native.</li>
         </ul>
       </div>
-      <div class="overflow-hidden rounded-lg border border-border bg-white shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
-        <div class="grid grid-cols-1 sm:grid-cols-2">
-          <div class="border-b border-border p-5 sm:border-b-0 sm:border-r">
+      <div class="media-frame flex flex-col overflow-hidden rounded-lg border border-border bg-white shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
+        <div class="grid min-h-0 flex-1 grid-cols-1 sm:grid-cols-2">
+          <div class="flex flex-col border-b border-border p-5 sm:border-b-0 sm:border-r">
             <div class="mb-3 text-[11px] font-semibold uppercase tracking-[1.5px] text-faint">Before</div>
-            <div class="mb-3 h-24 rounded-lg bg-[#1976D2]" role="img" aria-label="Legacy blue swatch #1976D2"></div>
+            <div class="mb-3 min-h-0 flex-1 rounded-lg bg-[#1976D2]" role="img" aria-label="Legacy blue swatch #1976D2"></div>
             <div class="mb-3 font-medium text-ink">#1976D2</div>
             <div class="flex flex-wrap items-center gap-2">
               <button type="button" class="rounded-[8px] bg-[#1976D2] px-4 py-2 text-[13px] font-medium text-white">Primary</button>
@@ -264,9 +265,9 @@
               <span class="rounded-full bg-[#E3F2FD] px-2.5 py-0.5 text-[11px] font-medium text-[#1976D2]">Active</span>
             </div>
           </div>
-          <div class="p-5">
+          <div class="flex flex-col p-5">
             <div class="mb-3 text-[11px] font-semibold uppercase tracking-[1.5px] text-faint">After</div>
-            <div class="mb-3 h-24 rounded-lg bg-[#0F62FE]" role="img" aria-label="IBM Blue swatch #0F62FE"></div>
+            <div class="mb-3 min-h-0 flex-1 rounded-lg bg-[#0F62FE]" role="img" aria-label="IBM Blue swatch #0F62FE"></div>
             <div class="mb-3 font-medium text-ink">#0F62FE · IBM Blue</div>
             <div class="flex flex-wrap items-center gap-2">
               <button type="button" class="rounded-[8px] bg-[#0F62FE] px-4 py-2 text-[13px] font-medium text-white">Primary</button>
@@ -275,7 +276,7 @@
             </div>
           </div>
         </div>
-        <div class="border-t border-border bg-[#F7F7F7] px-5 py-3.5 text-[13px] text-muted">
+        <div class="shrink-0 border-t border-border bg-[#F7F7F7] px-5 py-3.5 text-[13px] text-muted">
           <strong class="font-medium text-ink">Bottom line:</strong> better on screen, clearer in product, trusted in enterprise.
         </div>
       </div>
@@ -283,22 +284,41 @@
   </div>
 
   <!-- ── TYPOGRAPHY ── -->
-  <div class="reveal grid grid-cols-1 items-start gap-4 py-12 md:grid-cols-[200px_1fr] md:gap-12" data-reveal>
+  <div class="reveal rn-section rn-section-last grid grid-cols-1 items-start gap-4 md:grid-cols-[200px_1fr] md:gap-12" data-reveal>
     <div>
       <span class="mb-3 inline-block rounded-full bg-brand-tint px-2.5 py-[3px] text-[11px] font-semibold tracking-[0.3px] text-brand">Typography</span>
     </div>
     <div>
-      <h2 class="mb-2.5 font-sans text-[22px] font-bold tracking-[-0.3px] text-ink">Inter becomes the primary typeface</h2>
-      <p class="mb-4 text-[15px] leading-[1.75] text-muted">
+      <h2 class="rn-h2 font-sans">Inter becomes the primary typeface</h2>
+      <p class="rn-body mb-6">
         We're moving to <strong class="font-medium text-ink">Inter</strong> as the primary typeface across the entire dashboard. The previous mixed type stack is being retired.
       </p>
-      <div class="rounded-[10px] border border-border bg-[#F7F7F7] p-4">
+      <div class="mb-6 rounded-[10px] border border-border bg-[#F7F7F7] p-4">
         <div class="mb-1.5 text-[11px] font-bold uppercase tracking-[1.5px] text-faint">Why design needs this</div>
-        <ul class="m-0 list-disc space-y-1.5 pl-4 text-[14px] leading-[1.65] text-muted">
+        <ul class="rn-note m-0 list-disc space-y-2 pl-5">
           <li><strong class="font-medium text-ink">One voice.</strong> A single UI typeface keeps nav, headings, and body copy in the same rhythm.</li>
           <li><strong class="font-medium text-ink">Sharper hierarchy.</strong> Inter’s weights make dense dashboards easier to scan without increasing font size.</li>
           <li><strong class="font-medium text-ink">AI Native alignment.</strong> A modern, consistent typeface keeps the dashboard visually continuous with the next product tier.</li>
         </ul>
+      </div>
+      <div class="media-frame flex flex-col overflow-hidden rounded-lg border border-border bg-white shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
+        <div class="flex min-h-0 flex-1 flex-col justify-center gap-6 p-6 sm:p-8" style="font-family: Inter, system-ui, sans-serif">
+          <div class="text-[clamp(40px,7vw,72px)] font-semibold leading-none tracking-[-2px] text-ink">
+            Inter
+          </div>
+          <div class="max-w-[34ch] text-[18px] leading-[1.5] text-muted">
+            One typeface for nav, headings, and body — clearer hierarchy across the dashboard.
+          </div>
+          <div class="flex flex-wrap items-end gap-x-8 gap-y-3 text-ink">
+            <span class="text-[13px] font-normal">Regular 400</span>
+            <span class="text-[13px] font-medium">Medium 500</span>
+            <span class="text-[13px] font-semibold">Semibold 600</span>
+            <span class="text-[15px] font-bold">Bold 700</span>
+          </div>
+        </div>
+        <div class="shrink-0 border-t border-border bg-[#F7F7F7] px-5 py-3.5 text-[13px] text-muted">
+          <strong class="font-medium text-ink">Primary typeface</strong> across the entire dashboard.
+        </div>
       </div>
     </div>
   </div>
