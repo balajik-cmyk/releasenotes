@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What's New — Birdeye</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & BASE ── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --blue:       #0043CE;
+  --blue-tint:  #EEF2FF;
+  --ink:        #111111;
+  --muted:      #666666;
+  --faint:      #999999;
+  --border:     #EEEEEE;
+  --surface:    #F7F7F7;
+  --white:      #FFFFFF;
+  --serif:      'Playfair Display', Georgia, serif;
+  --sans:       'DM Sans', -apple-system, sans-serif; /* Circular fallback */
+  --radius-sm:  6px;
+  --radius:     10px;
+  --radius-lg:  14px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--white); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px;
+}
+.nav-logo { font-family: var(--serif); font-size: 18px; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -0.3px; }
+.nav-cta {
+  background: var(--ink); color: var(--white);
+  border: none; border-radius: var(--radius-sm);
+  padding: 8px 18px; font-size: 13px; font-weight: 500;
+  font-family: var(--sans); cursor: pointer; text-decoration: none;
+  transition: background 0.15s;
+}
+.nav-cta:hover { background: #333; }
+
+/* ── HERO ── */
+.hero {
+  max-width: 760px; margin: 0 auto;
+  padding: 100px 24px 72px;
+  text-align: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--ink); color: var(--white);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 5px 14px; border-radius: 999px;
+  margin-bottom: 28px;
+}
+.hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; display: inline-block; }
+.hero-h1 {
+  font-family: var(--serif);
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 700; line-height: 1.1;
+  letter-spacing: -1.5px; color: var(--ink);
+  margin-bottom: 20px;
+}
+.hero-sub {
+  font-size: 18px; color: var(--muted); line-height: 1.7;
+  max-width: 520px; margin: 0 auto 36px;
+  font-weight: 400;
+}
+.hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--blue); color: var(--white);
+  border: none; border-radius: var(--radius-sm);
+  padding: 13px 26px; font-size: 15px; font-weight: 500;
+  font-family: var(--sans); cursor: pointer; text-decoration: none;
+  transition: opacity 0.15s;
+}
+.btn-primary:hover { opacity: 0.88; }
+.btn-ghost {
+  background: transparent; color: var(--ink);
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 13px 26px; font-size: 15px; font-weight: 400;
+  font-family: var(--sans); cursor: pointer; text-decoration: none;
+  transition: border-color 0.15s;
+}
+.btn-ghost:hover { border-color: #bbb; }
+
+/* ── DIVIDER ── */
+.hero-divider { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; }
+
+/* ── CHANGES SECTION ── */
+.changes { max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
+
+.section-header { padding: 56px 0 8px; }
+.section-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--faint); margin-bottom: 6px; }
+.section-title { font-family: var(--serif); font-size: 28px; font-weight: 700; color: var(--ink); letter-spacing: -0.5px; }
+
+/* ── CHANGE ENTRY ── */
+.change-entry {
+  border-top: 1px solid var(--border);
+  padding: 48px 0;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.change-meta { }
+.change-tag {
+  display: inline-block;
+  background: var(--blue-tint); color: var(--blue);
+  font-size: 11px; font-weight: 600;
+  padding: 3px 10px; border-radius: 999px;
+  margin-bottom: 12px; letter-spacing: 0.3px;
+}
+.change-tag.color-tag { background: #FFF3E0; color: #E65100; }
+.change-tag.comp-tag  { background: #F3E5F5; color: #6A1B9A; }
+.change-tag.layout-tag{ background: #E8F5E9; color: #1B5E20; }
+.change-date { font-size: 12px; color: var(--faint); margin-top: 6px; }
+
+.change-body { }
+.change-title { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.3px; }
+.change-desc { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 24px; }
+.change-desc strong { color: var(--ink); font-weight: 500; }
+
+/* ── BEFORE/AFTER SLIDER ── */
+.ba-wrap { margin-top: 8px; }
+.ba-slider {
+  position: relative; overflow: hidden;
+  border-radius: var(--radius-lg);
+  cursor: ew-resize; user-select: none; touch-action: none;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  border: 1px solid var(--border);
+}
+.ba-after { display: block; width: 100%; height: 100%; position: relative; }
+.ba-before { position: absolute; inset: 0; overflow: hidden; }
+.ba-before-inner { position: absolute; inset: 0; }
+.ba-divider { position: absolute; top: 0; bottom: 0; width: 2px; background: #f6f1e7; transform: translateX(-50%); pointer-events: none; z-index: 10; }
+.ba-grip {
+  position: absolute; top: 50%;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: #f6f1e7;
+  box-shadow: 0 8px 24px rgba(30,20,10,0.25);
+  display: flex; align-items: center; justify-content: center;
+  transform: translate(-50%, -50%); z-index: 20;
+  cursor: ew-resize; outline: none;
+  transition: box-shadow 0.15s;
+}
+.ba-grip:focus-visible { box-shadow: 0 8px 24px rgba(30,20,10,0.25), 0 0 0 3px var(--blue); }
+.ba-grip:hover { box-shadow: 0 10px 32px rgba(30,20,10,0.35); }
+.ba-label {
+  position: absolute; top: 12px;
+  background: rgba(0,0,0,0.48); color: #fff;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.5px;
+  padding: 4px 10px; border-radius: 999px;
+  pointer-events: none; z-index: 5;
+}
+.ba-label.lbefore { left: 12px; }
+.ba-label.lafter  { right: 12px; }
+
+/* ── MOCK PANELS (Typography change) ── */
+.panel { width: 100%; height: 440px; overflow: hidden; }
+
+/* OLD typography panel */
+.typo-old { background: #f0f4fb; font-family: 'Georgia', serif; }
+.typo-old .tb { background: #0043CE; height: 48px; display:flex; align-items:center; padding: 0 20px; }
+.typo-old .tb-logo { color:#fff; font-size:16px; font-weight:700; font-family:'Georgia',serif; }
+.typo-old .tb-nav span { color:rgba(255,255,255,.7); font-size:12px; margin-left:16px; font-family:sans-serif; }
+.typo-old .bd { display:flex; height:calc(100% - 48px); }
+.typo-old .sb { width:140px; background:#fff; border-right:1px solid #cdd7e8; padding:10px 0; }
+.typo-old .si { padding:9px 16px; font-size:12px; color:#555; border-left:3px solid transparent; font-family:sans-serif; }
+.typo-old .si.a { border-left-color:#0043CE; color:#0043CE; background:#e8f0fc; font-weight:700; }
+.typo-old .ct { flex:1; padding:18px; }
+.typo-old .pt { font-size:20px; font-weight:700; color:#0043CE; margin-bottom:12px; font-family:'Georgia',serif; }
+.typo-old .desc { font-size:13px; color:#444; line-height:1.6; margin-bottom:14px; font-family:sans-serif; }
+.typo-old .cards { display:flex; gap:8px; }
+.typo-old .card { flex:1; background:#fff; border:1px solid #bfcfe8; border-radius:4px; padding:10px; }
+.typo-old .cn { font-size:20px; font-weight:700; color:#0043CE; font-family:'Georgia',serif; }
+.typo-old .cl { font-size:10px; color:#888; font-family:sans-serif; }
+
+/* NEW typography panel */
+.typo-new { background: #fff; font-family: 'DM Sans', sans-serif; }
+.typo-new .tb { background:#fff; height:52px; border-bottom:1px solid #eee; display:flex; align-items:center; padding:0 20px; }
+.typo-new .tb-logo { color:#111; font-size:17px; font-weight:700; font-family:'Playfair Display',serif; letter-spacing:-0.3px; }
+.typo-new .tb-nav { margin-left:auto; display:flex; gap:18px; }
+.typo-new .tb-nav span { color:#666; font-size:13px; }
+.typo-new .bd { display:flex; height:calc(100% - 52px); }
+.typo-new .sb { width:148px; background:#fff; border-right:1px solid #eee; padding:10px 8px; }
+.typo-new .si { padding:9px 12px; font-size:13px; color:#666; border-radius:8px; margin-bottom:2px; }
+.typo-new .si.a { background:#EEF2FF; color:#0043CE; font-weight:500; }
+.typo-new .ct { flex:1; padding:20px; }
+.typo-new .pt { font-size:22px; font-weight:700; color:#111; margin-bottom:12px; font-family:'Playfair Display',serif; letter-spacing:-0.5px; }
+.typo-new .desc { font-size:13px; color:#666; line-height:1.7; margin-bottom:14px; }
+.typo-new .cards { display:flex; gap:10px; }
+.typo-new .card { flex:1; background:#fff; border:1px solid #eee; border-radius:10px; padding:12px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
+.typo-new .cn { font-size:22px; font-weight:700; color:#111; font-family:'Playfair Display',serif; }
+.typo-new .cl { font-size:11px; color:#999; margin-top:2px; }
+
+/* ── COLOR PANELS ── */
+.color-old { background:#f0f4fb; padding:24px; display:flex; flex-direction:column; gap:16px; justify-content:center; }
+.color-old .row { display:flex; gap:8px; }
+.color-old .swatch { height:48px; border-radius:4px; flex:1; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:600; color:#fff; font-family:sans-serif; }
+.color-old .label { font-size:12px; color:#555; font-weight:600; font-family:sans-serif; margin-bottom:4px; }
+.color-old .chip-row { display:flex; gap:6px; margin-top:4px; }
+.color-old .chip { padding:4px 10px; border-radius:3px; font-size:11px; font-weight:600; font-family:sans-serif; }
+
+.color-new { background:#fff; padding:24px; display:flex; flex-direction:column; gap:16px; justify-content:center; }
+.color-new .row { display:flex; gap:8px; }
+.color-new .swatch { height:48px; border-radius:10px; flex:1; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:600; font-family:'DM Sans',sans-serif; }
+.color-new .label { font-size:12px; color:#999; font-weight:500; font-family:'DM Sans',sans-serif; margin-bottom:4px; letter-spacing:0.3px; }
+.color-new .chip-row { display:flex; gap:6px; margin-top:4px; }
+.color-new .chip { padding:4px 12px; border-radius:999px; font-size:11px; font-weight:500; font-family:'DM Sans',sans-serif; }
+
+/* ── COMPONENT PANELS ── */
+.comp-panel { background:#fff; padding:24px; display:flex; flex-direction:column; gap:16px; }
+
+/* old buttons */
+.btn-old-p { background:#0043CE; color:#fff; border:none; border-radius:3px; padding:9px 18px; font-size:13px; font-family:sans-serif; font-weight:700; margin-right:8px; }
+.btn-old-s { background:#fff; color:#0043CE; border:2px solid #0043CE; border-radius:3px; padding:9px 18px; font-size:13px; font-family:sans-serif; font-weight:700; margin-right:8px; }
+/* new buttons */
+.btn-new-p { background:#0043CE; color:#fff; border:none; border-radius:8px; padding:10px 20px; font-size:14px; font-family:'DM Sans',sans-serif; font-weight:500; margin-right:8px; }
+.btn-new-s { background:#fff; color:#666; border:1px solid #eee; border-radius:8px; padding:10px 20px; font-size:14px; font-family:'DM Sans',sans-serif; font-weight:400; margin-right:8px; }
+.btn-new-g { background:transparent; color:#0043CE; border:none; border-radius:8px; padding:10px 20px; font-size:14px; font-family:'DM Sans',sans-serif; font-weight:500; margin-right:8px; }
+
+/* old card */
+.crd-old { background:#fff; border:1px solid #bfcfe8; border-radius:4px; padding:14px; }
+.crd-old-title { font-size:13px; font-weight:700; color:#0043CE; margin-bottom:4px; font-family:sans-serif; }
+.crd-old-body { font-size:12px; color:#555; font-family:sans-serif; }
+/* new card */
+.crd-new { background:#fff; border:1px solid #eee; border-radius:10px; padding:16px; box-shadow:0 2px 8px rgba(0,0,0,.06); }
+.crd-new-title { font-size:14px; font-weight:600; color:#111; margin-bottom:4px; font-family:'Playfair Display',serif; }
+.crd-new-body { font-size:12px; color:#777; font-family:'DM Sans',sans-serif; }
+
+/* ── LAYOUT PANELS ── */
+.layout-old { background:#f0f4fb; }
+.layout-new { background:#fff; }
+
+/* ── PILL BADGE ── */
+.tag-old { display:inline-block; background:#0043CE; color:#fff; border-radius:3px; padding:2px 8px; font-size:11px; font-family:sans-serif; }
+.tag-new { display:inline-block; background:#EEF2FF; color:#0043CE; border-radius:999px; padding:2px 10px; font-size:11px; font-family:'DM Sans',sans-serif; font-weight:500; }
+
+/* ── CHANGES COUNT ── */
+.changes-count { font-size:13px; color:var(--faint); margin-top:6px; }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 900px; margin: 0 auto;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-logo { font-family: var(--serif); font-size: 16px; font-weight: 700; color: var(--ink); }
+.footer-note { font-size: 13px; color: var(--faint); }
+.footer-link { color: var(--blue); text-decoration: none; font-size: 13px; }
+.footer-link:hover { text-decoration: underline; }
+
+/* ── CALLOUT BOX ── */
+.callout {
+  background: var(--surface); border-radius: var(--radius);
+  border-left: 3px solid var(--blue);
+  padding: 14px 18px; margin-top: 20px;
+  font-size: 13px; color: var(--muted); line-height: 1.7;
+}
+.callout strong { color: var(--blue); font-weight: 600; }
+
+/* ── PLACEHOLDER ── */
+.placeholder {
+  background: var(--surface); border: 2px dashed var(--border);
+  border-radius: var(--radius); height: 400px;
+  display: flex; flex-direction:column; align-items: center; justify-content: center;
+  gap: 8px; color: var(--faint);
+}
+.placeholder svg { opacity: 0.3; }
+.placeholder p { font-size: 13px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 680px) {
+  nav { padding: 0 20px; }
+  .hero { padding: 60px 20px 48px; }
+  .change-entry { grid-template-columns: 1fr; gap: 16px; }
+  footer { padding: 32px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="#">birdeye</a>
+  <a class="nav-cta" href="https://preprod-ent-reportingapp.birdeye.com/dashboard/home" target="_blank">Preview new design →</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-badge">
+    <span class="dot"></span>
+    Coming August 2026 · AI Native
+  </div>
+  <h1 class="hero-h1">Beautifully<br>yet simple,<br><em style="font-style:italic;color:#0043CE;">yet modern.</em></h1>
+  <p class="hero-sub">
+    We're refreshing the Birdeye dashboard — cleaner, more modern, and fully aligned with AI Native. Same powerful features, elevated experience.
+  </p>
+  <div class="hero-actions">
+    <a class="btn-primary" href="https://preprod-ent-reportingapp.birdeye.com/dashboard/home" target="_blank">Preview the new look →</a>
+    <a class="btn-ghost" href="#changes">See all changes</a>
+  </div>
+</section>
+
+<hr class="hero-divider">
+
+<!-- ── CHANGES ── -->
+<div class="changes" id="changes">
+
+  <div class="section-header">
+    <div class="section-label">What's changing</div>
+    <div class="section-title">Every update, documented.</div>
+    <div class="changes-count">4 changes · Drag each slider to compare before and after</div>
+  </div>
+
+  <!-- ── 1. TYPOGRAPHY ── -->
+  <div class="change-entry">
+    <div class="change-meta">
+      <span class="change-tag">Typography</span>
+      <div class="change-date">August 2026</div>
+    </div>
+    <div class="change-body">
+      <h2 class="change-title">Circular replaces Inter & Poppins</h2>
+      <p class="change-desc">
+        We're moving to <strong>Circular</strong> as the primary typeface across the entire dashboard. Inter and Poppins are being retired. The result: sharper readability, more consistent type hierarchy, and a feel that's unmistakably modern.
+      </p>
+      <div class="ba-wrap">
+        <div class="ba-slider" id="s1" style="height:440px;" data-start="50">
+          <!-- AFTER -->
+          <div class="ba-after">
+            <div class="panel typo-new">
+              <div class="tb">
+                <span class="tb-logo">birdeye</span>
+                <div class="tb-nav"><span>Dashboard</span><span>Reviews</span><span>Listings</span></div>
+              </div>
+              <div class="bd">
+                <div class="sb">
+                  <div class="si a">Dashboard</div><div class="si">Reviews</div>
+                  <div class="si">Listings</div><div class="si">Reports</div>
+                </div>
+                <div class="ct">
+                  <div class="pt">Dashboard</div>
+                  <div class="desc">Your reputation at a glance. All locations performing well this week.</div>
+                  <div class="cards">
+                    <div class="card"><div class="cn">4.8</div><div class="cl">Avg Rating</div></div>
+                    <div class="card"><div class="cn">1,284</div><div class="cl">Reviews</div></div>
+                    <div class="card"><div class="cn">98%</div><div class="cl">Response Rate</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- BEFORE -->
+          <div class="ba-before" id="b1"><div class="ba-before-inner" id="bi1">
+            <div class="panel typo-old">
+              <div class="tb">
+                <span class="tb-logo">birdeye</span>
+                <div class="tb-nav"><span>Dashboard</span><span>Reviews</span><span>Listings</span></div>
+              </div>
+              <div class="bd">
+                <div class="sb">
+                  <div class="si a">Dashboard</div><div class="si">Reviews</div>
+                  <div class="si">Listings</div><div class="si">Reports</div>
+                </div>
+                <div class="ct">
+                  <div class="pt">Dashboard</div>
+                  <div class="desc" style="font-family:sans-serif;font-size:13px;color:#444;line-height:1.6;margin-bottom:14px;">Your reputation at a glance. All locations performing well this week.</div>
+                  <div class="cards">
+                    <div class="card"><div class="cn">4.8</div><div class="cl">Avg Rating</div></div>
+                    <div class="card"><div class="cn">1,284</div><div class="cl">Reviews</div></div>
+                    <div class="card"><div class="cn">98%</div><div class="cl">Response Rate</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div></div>
+          <div class="ba-label lbefore">Before</div>
+          <div class="ba-label lafter">After</div>
+          <div class="ba-divider" id="d1"></div>
+          <div class="ba-grip" id="g1" role="slider" tabindex="0" aria-label="Typography comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 5L3 12L8 19" stroke="#7a6a55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 5L21 12L16 19" stroke="#7a6a55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2. COLOR ── -->
+  <div class="change-entry">
+    <div class="change-meta">
+      <span class="change-tag color-tag">Color</span>
+      <div class="change-date">August 2026</div>
+    </div>
+    <div class="change-body">
+      <h2 class="change-title">Refreshed color palette</h2>
+      <p class="change-desc">
+        The color system is updated to align with <strong>AI Native</strong>. Tokens are cleaner, contrast ratios meet <strong>WCAG AA</strong> accessibility standards, and the palette is applied consistently across every surface in the dashboard.
+      </p>
+      <div class="ba-wrap">
+        <div class="ba-slider" id="s2" style="height:400px;" data-start="50">
+          <!-- AFTER -->
+          <div class="ba-after">
+            <div class="color-new panel" style="height:400px;">
+              <div class="label" style="font-size:12px;color:#999;font-weight:500;font-family:'DM Sans',sans-serif;margin-bottom:8px;">New palette — refined & accessible</div>
+              <div class="row">
+                <div class="swatch" style="background:#111111;color:#fff;">Ink<br><span style="font-size:9px;opacity:.7;">#111111</span></div>
+                <div class="swatch" style="background:#0043CE;color:#fff;">Brand<br><span style="font-size:9px;opacity:.7;">#0043CE</span></div>
+                <div class="swatch" style="background:#EEF2FF;color:#0043CE;">Tint<br><span style="font-size:9px;">#EEF2FF</span></div>
+                <div class="swatch" style="background:#EEEEEE;color:#666;">Border<br><span style="font-size:9px;">#EEEEEE</span></div>
+                <div class="swatch" style="background:#F7F7F7;color:#666;">Surface<br><span style="font-size:9px;">#F7F7F7</span></div>
+              </div>
+              <div class="label" style="font-size:12px;color:#999;font-weight:500;font-family:'DM Sans',sans-serif;margin-top:16px;margin-bottom:8px;">Status & semantic</div>
+              <div class="chip-row">
+                <span class="chip" style="background:#E8F5E9;color:#1B5E20;">Active</span>
+                <span class="chip" style="background:#FFF3E0;color:#E65100;">Pending</span>
+                <span class="chip" style="background:#FFEBEE;color:#B71C1C;">Error</span>
+                <span class="chip" style="background:#EEF2FF;color:#0043CE;">Info</span>
+              </div>
+            </div>
+          </div>
+          <!-- BEFORE -->
+          <div class="ba-before" id="b2"><div class="ba-before-inner" id="bi2">
+            <div class="color-old panel" style="height:400px;">
+              <div class="label">Old palette — blue-heavy</div>
+              <div class="row">
+                <div class="swatch" style="background:#1976d2;color:#fff;">Primary<br><span style="font-size:9px;opacity:.7;">#1976d2</span></div>
+                <div class="swatch" style="background:#07213a;color:#fff;">900<br><span style="font-size:9px;opacity:.7;">#07213a</span></div>
+                <div class="swatch" style="background:#5ba4ec;color:#fff;">300<br><span style="font-size:9px;opacity:.7;">#5ba4ec</span></div>
+                <div class="swatch" style="background:#ecf5fd;color:#0043CE;">20<br><span style="font-size:9px;">#ecf5fd</span></div>
+                <div class="swatch" style="background:#eaeaea;color:#666;">Gray<br><span style="font-size:9px;">#eaeaea</span></div>
+              </div>
+              <div class="label" style="margin-top:16px;">Status chips</div>
+              <div class="chip-row">
+                <span class="chip" style="background:#4cae3d;color:#fff;">Active</span>
+                <span class="chip" style="background:#e6aa04;color:#fff;">Pending</span>
+                <span class="chip" style="background:#de1b0c;color:#fff;">Error</span>
+                <span class="chip" style="background:#1976d2;color:#fff;">Info</span>
+              </div>
+            </div>
+          </div></div>
+          <div class="ba-label lbefore">Before</div>
+          <div class="ba-label lafter">After</div>
+          <div class="ba-divider" id="d2"></div>
+          <div class="ba-grip" id="g2" role="slider" tabindex="0" aria-label="Color comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 5L3 12L8 19" stroke="#7a6a55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 5L21 12L16 19" stroke="#7a6a55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3. COMPONENTS ── -->
+  <div class="change-entry">
+    <div class="change-meta">
+      <span class="change-tag comp-tag">Components</span>
+      <div class="change-date">August 2026</div>
+    </div>
+    <div class="change-body">
+      <h2 class="change-title">Modernized UI components</h2>
+      <p class="change-desc">
+        Buttons, cards, navigation, modals, badges — every component has been updated. Softer <strong>8px corner radius</strong>, refined spacing, and a consistent visual language across the entire dashboard.
+      </p>
+      <div class="ba-wrap">
+        <div class="ba-slider" id="s3" style="height:400px;" data-start="50">
+          <!-- AFTER -->
+          <div class="ba-after">
+            <div class="comp-panel panel" style="height:280px;background:#fff;">
+              <div>
+                <div style="font-size:11px;color:#aaa;font-family:'DM Sans',sans-serif;font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">Buttons</div>
+                <button class="btn-new-p">Save changes</button>
+                <button class="btn-new-s">Cancel</button>
+                <button class="btn-new-g">Learn more</button>
+              </div>
+              <div>
+                <div style="font-size:11px;color:#aaa;font-family:'DM Sans',sans-serif;font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">Card</div>
+                <div class="crd-new">
+                  <div class="crd-new-title">Atlanta, GA</div>
+                  <div class="crd-new-body">4.9 stars · 312 reviews · <span class="tag-new">Active</span></div>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:11px;color:#aaa;font-family:'DM Sans',sans-serif;font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">Status badges</div>
+                <span class="tag-new" style="margin-right:6px;">Active</span>
+                <span class="tag-new" style="background:#E8F5E9;color:#1B5E20;margin-right:6px;">Synced</span>
+                <span class="tag-new" style="background:#FFEBEE;color:#B71C1C;margin-right:6px;">Error</span>
+                <span class="tag-new" style="background:#FFF3E0;color:#E65100;">Pending</span>
+              </div>
+            </div>
+          </div>
+          <!-- BEFORE -->
+          <div class="ba-before" id="b3"><div class="ba-before-inner" id="bi3">
+            <div class="comp-panel panel" style="height:280px;background:#f0f4fb;">
+              <div>
+                <div style="font-size:11px;color:#888;font-family:sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">Buttons</div>
+                <button class="btn-old-p">Save changes</button>
+                <button class="btn-old-s">Cancel</button>
+              </div>
+              <div>
+                <div style="font-size:11px;color:#888;font-family:sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">Card</div>
+                <div class="crd-old">
+                  <div class="crd-old-title">Atlanta, GA</div>
+                  <div class="crd-old-body">4.9 stars · 312 reviews · <span class="tag-old">Active</span></div>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:11px;color:#888;font-family:sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">Status badges</div>
+                <span class="tag-old" style="margin-right:6px;">Active</span>
+                <span class="tag-old" style="background:#4cae3d;margin-right:6px;">Synced</span>
+                <span class="tag-old" style="background:#de1b0c;margin-right:6px;">Error</span>
+                <span class="tag-old" style="background:#e6aa04;margin-right:6px;">Pending</span>
+              </div>
+            </div>
+          </div></div>
+          <div class="ba-label lbefore">Before</div>
+          <div class="ba-label lafter">After</div>
+          <div class="ba-divider" id="d3"></div>
+          <div class="ba-grip" id="g3" role="slider" tabindex="0" aria-label="Component comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 5L3 12L8 19" stroke="#7a6a55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 5L21 12L16 19" stroke="#7a6a55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4. LAYOUT ── -->
+  <div class="change-entry">
+    <div class="change-meta">
+      <span class="change-tag layout-tag">Layout</span>
+      <div class="change-date">August 2026</div>
+    </div>
+    <div class="change-body">
+      <h2 class="change-title">More space, less clutter</h2>
+      <p class="change-desc">
+        The overall layout system is updated to introduce more intentional <strong>whitespace</strong>, improved grid alignment, and a reduced visual density — consistent with the "beautifully yet simple" principle. Everything breathes.
+      </p>
+      <div class="ba-slider" id="s4" style="height:400px;" data-start="50">
+        <!-- AFTER -->
+        <div class="ba-after">
+          <div style="width:100%;height:400px;background:#fff;display:flex;flex-direction:column;">
+            <div style="background:#fff;height:52px;border-bottom:1px solid #eee;display:flex;align-items:center;padding:0 24px;gap:12px;">
+              <span style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#111;">birdeye</span>
+              <span style="margin-left:auto;font-size:13px;color:#666;font-family:'DM Sans',sans-serif;">Dashboard</span>
+              <span style="font-size:13px;color:#666;font-family:'DM Sans',sans-serif;">Reviews</span>
+              <span style="font-size:13px;color:#666;font-family:'DM Sans',sans-serif;">Listings</span>
+            </div>
+            <div style="display:flex;flex:1;overflow:hidden;">
+              <div style="width:160px;background:#fff;border-right:1px solid #eee;padding:16px 10px;flex-shrink:0;">
+                <div style="padding:10px 12px;font-size:13px;color:#0043CE;font-family:'DM Sans',sans-serif;font-weight:500;background:#EEF2FF;border-radius:8px;margin-bottom:4px;">Dashboard</div>
+                <div style="padding:10px 12px;font-size:13px;color:#888;font-family:'DM Sans',sans-serif;margin-bottom:4px;">Reviews</div>
+                <div style="padding:10px 12px;font-size:13px;color:#888;font-family:'DM Sans',sans-serif;margin-bottom:4px;">Listings</div>
+                <div style="padding:10px 12px;font-size:13px;color:#888;font-family:'DM Sans',sans-serif;margin-bottom:4px;">Reports</div>
+                <div style="padding:10px 12px;font-size:13px;color:#888;font-family:'DM Sans',sans-serif;">Messages</div>
+              </div>
+              <div style="flex:1;padding:28px;background:#fff;">
+                <div style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#111;margin-bottom:6px;letter-spacing:-0.5px;">Dashboard</div>
+                <div style="font-size:13px;color:#999;font-family:'DM Sans',sans-serif;margin-bottom:24px;">Thursday, July 2026</div>
+                <div style="display:flex;gap:14px;margin-bottom:20px;">
+                  <div style="flex:1;background:#fff;border:1px solid #eee;border-radius:10px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05);">
+                    <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#111;">4.8</div>
+                    <div style="font-size:12px;color:#aaa;margin-top:4px;font-family:'DM Sans',sans-serif;">Avg Rating</div>
+                  </div>
+                  <div style="flex:1;background:#fff;border:1px solid #eee;border-radius:10px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05);">
+                    <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#111;">1,284</div>
+                    <div style="font-size:12px;color:#aaa;margin-top:4px;font-family:'DM Sans',sans-serif;">Reviews</div>
+                  </div>
+                  <div style="flex:1;background:#fff;border:1px solid #eee;border-radius:10px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05);">
+                    <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#111;">98%</div>
+                    <div style="font-size:12px;color:#aaa;margin-top:4px;font-family:'DM Sans',sans-serif;">Response Rate</div>
+                  </div>
+                </div>
+                <div style="background:#fff;border:1px solid #eee;border-radius:10px;overflow:hidden;">
+                  <div style="display:flex;border-bottom:1px solid #eee;padding:10px 16px;"><span style="flex:2;font-size:12px;color:#aaa;font-family:'DM Sans',sans-serif;font-weight:500;">Location</span><span style="flex:1;font-size:12px;color:#aaa;font-family:'DM Sans',sans-serif;font-weight:500;">Rating</span><span style="flex:1;font-size:12px;color:#aaa;font-family:'DM Sans',sans-serif;font-weight:500;">Status</span></div>
+                  <div style="display:flex;padding:10px 16px;border-bottom:1px solid #f5f5f5;"><span style="flex:2;font-size:13px;color:#333;font-family:'DM Sans',sans-serif;">Atlanta, GA</span><span style="flex:1;font-size:13px;color:#333;font-family:'DM Sans',sans-serif;">4.9</span><span style="flex:1;"><span style="background:#EEF2FF;color:#0043CE;border-radius:999px;padding:2px 10px;font-size:11px;font-family:'DM Sans',sans-serif;font-weight:500;">Active</span></span></div>
+                  <div style="display:flex;padding:10px 16px;border-bottom:1px solid #f5f5f5;"><span style="flex:2;font-size:13px;color:#333;font-family:'DM Sans',sans-serif;">New York, NY</span><span style="flex:1;font-size:13px;color:#333;font-family:'DM Sans',sans-serif;">4.7</span><span style="flex:1;"><span style="background:#EEF2FF;color:#0043CE;border-radius:999px;padding:2px 10px;font-size:11px;font-family:'DM Sans',sans-serif;font-weight:500;">Active</span></span></div>
+                  <div style="display:flex;padding:10px 16px;"><span style="flex:2;font-size:13px;color:#333;font-family:'DM Sans',sans-serif;">Los Angeles, CA</span><span style="flex:1;font-size:13px;color:#333;font-family:'DM Sans',sans-serif;">4.6</span><span style="flex:1;"><span style="background:#EEF2FF;color:#0043CE;border-radius:999px;padding:2px 10px;font-size:11px;font-family:'DM Sans',sans-serif;font-weight:500;">Active</span></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- BEFORE -->
+        <div class="ba-before" id="b4"><div class="ba-before-inner" id="bi4">
+          <div style="width:100%;height:400px;background:#f0f4fb;display:flex;flex-direction:column;font-family:sans-serif;">
+            <div style="background:#0043CE;height:48px;display:flex;align-items:center;padding:0 20px;">
+              <span style="color:#fff;font-size:16px;font-weight:700;">birdeye</span>
+              <span style="color:rgba(255,255,255,.7);font-size:12px;margin-left:20px;">Dashboard</span>
+              <span style="color:rgba(255,255,255,.7);font-size:12px;margin-left:16px;">Reviews</span>
+              <span style="color:rgba(255,255,255,.7);font-size:12px;margin-left:16px;">Listings</span>
+            </div>
+            <div style="display:flex;flex:1;overflow:hidden;">
+              <div style="width:140px;background:#fff;border-right:1px solid #cdd7e8;padding:10px 0;flex-shrink:0;">
+                <div style="padding:9px 16px;font-size:12px;color:#0043CE;font-weight:700;border-left:3px solid #0043CE;background:#e8f0fc;">Dashboard</div>
+                <div style="padding:9px 16px;font-size:12px;color:#555;border-left:3px solid transparent;">Reviews</div>
+                <div style="padding:9px 16px;font-size:12px;color:#555;border-left:3px solid transparent;">Listings</div>
+                <div style="padding:9px 16px;font-size:12px;color:#555;border-left:3px solid transparent;">Reports</div>
+                <div style="padding:9px 16px;font-size:12px;color:#555;border-left:3px solid transparent;">Messages</div>
+              </div>
+              <div style="flex:1;padding:16px;">
+                <div style="font-size:20px;font-weight:700;color:#0043CE;margin-bottom:14px;">Dashboard</div>
+                <div style="display:flex;gap:8px;margin-bottom:14px;">
+                  <div style="flex:1;background:#fff;border:1px solid #bfcfe8;border-radius:4px;padding:12px;">
+                    <div style="font-size:22px;font-weight:700;color:#0043CE;">4.8</div>
+                    <div style="font-size:10px;color:#888;">Avg Rating</div>
+                  </div>
+                  <div style="flex:1;background:#fff;border:1px solid #bfcfe8;border-radius:4px;padding:12px;">
+                    <div style="font-size:22px;font-weight:700;color:#0043CE;">1,284</div>
+                    <div style="font-size:10px;color:#888;">Reviews</div>
+                  </div>
+                  <div style="flex:1;background:#fff;border:1px solid #bfcfe8;border-radius:4px;padding:12px;">
+                    <div style="font-size:22px;font-weight:700;color:#0043CE;">98%</div>
+                    <div style="font-size:10px;color:#888;">Response Rate</div>
+                  </div>
+                </div>
+                <div style="background:#fff;border:1px solid #bfcfe8;border-radius:4px;overflow:hidden;">
+                  <div style="display:flex;background:#dde8f7;"><span style="flex:2;padding:7px 10px;font-size:11px;color:#555;font-weight:600;">Location</span><span style="flex:1;padding:7px 10px;font-size:11px;color:#555;font-weight:600;">Rating</span><span style="flex:1;padding:7px 10px;font-size:11px;color:#555;font-weight:600;">Status</span></div>
+                  <div style="display:flex;border-top:1px solid #e8eef5;"><span style="flex:2;padding:7px 10px;font-size:11px;color:#333;">Atlanta, GA</span><span style="flex:1;padding:7px 10px;font-size:11px;color:#333;">4.9</span><span style="flex:1;padding:7px 10px;"><span style="background:#0043CE;color:#fff;border-radius:3px;padding:1px 7px;font-size:10px;">Active</span></span></div>
+                  <div style="display:flex;border-top:1px solid #e8eef5;"><span style="flex:2;padding:7px 10px;font-size:11px;color:#333;">New York, NY</span><span style="flex:1;padding:7px 10px;font-size:11px;color:#333;">4.7</span><span style="flex:1;padding:7px 10px;"><span style="background:#0043CE;color:#fff;border-radius:3px;padding:1px 7px;font-size:10px;">Active</span></span></div>
+                  <div style="display:flex;border-top:1px solid #e8eef5;"><span style="flex:2;padding:7px 10px;font-size:11px;color:#333;">Los Angeles, CA</span><span style="flex:1;padding:7px 10px;font-size:11px;color:#333;">4.6</span><span style="flex:1;padding:7px 10px;"><span style="background:#0043CE;color:#fff;border-radius:3px;padding:1px 7px;font-size:10px;">Active</span></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div></div>
+        <div class="ba-label lbefore">Before</div>
+        <div class="ba-label lafter">After</div>
+        <div class="ba-divider" id="d4"></div>
+        <div class="ba-grip" id="g4" role="slider" tabindex="0" aria-label="Layout comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 5L3 12L8 19" stroke="#7a6a55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 5L21 12L16 19" stroke="#7a6a55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /changes -->
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div>
+    <div class="footer-logo">birdeye</div>
+    <div class="footer-note" style="margin-top:4px;">Questions? Reach out to your Customer Success Manager.</div>
+  </div>
+  <div style="text-align:right;">
+    <a class="footer-link" href="https://preprod-ent-reportingapp.birdeye.com/dashboard/home" target="_blank">Preview staging environment →</a>
+    <div class="footer-note" style="margin-top:4px;">birdeye.com/whats-new</div>
+  </div>
+</footer>
+
+<!-- ── SLIDER SCRIPT ── -->
+<script>
+function initSlider(sid, bid, biid, did, gid, startPct) {
+  var sl  = document.getElementById(sid);
+  var be  = document.getElementById(bid);
+  var bi  = document.getElementById(biid);
+  var dv  = document.getElementById(did);
+  var gr  = document.getElementById(gid);
+  var p   = startPct || 50;
+
+  function set(v) {
+    p = Math.max(0, Math.min(100, v));
+    var px = (p / 100) * sl.offsetWidth;
+    be.style.width  = px + 'px';
+    bi.style.width  = sl.offsetWidth + 'px';
+    dv.style.left   = px + 'px';
+    gr.style.left   = px + 'px';
+    gr.setAttribute('aria-valuenow', Math.round(p));
+  }
+
+  set(p);
+
+  sl.addEventListener('pointerdown', function(e) {
+    e.preventDefault();
+    sl.setPointerCapture(e.pointerId);
+    move(e.clientX);
+    sl.addEventListener('pointermove', onMove);
+    sl.addEventListener('pointerup', onUp);
+  });
+  function onMove(e) { move(e.clientX); }
+  function onUp()    { sl.removeEventListener('pointermove', onMove); sl.removeEventListener('pointerup', onUp); }
+  function move(cx)  { var r = sl.getBoundingClientRect(); set(((cx - r.left) / r.width) * 100); }
+
+  gr.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft')  { set(p - 2); e.preventDefault(); }
+    if (e.key === 'ArrowRight') { set(p + 2); e.preventDefault(); }
+  });
+
+  window.addEventListener('resize', function() { set(p); });
+}
+
+initSlider('s1','b1','bi1','d1','g1', 50);
+initSlider('s2','b2','bi2','d2','g2', 50);
+initSlider('s3','b3','bi3','d3','g3', 50);
+initSlider('s4','b4','bi4','d4','g4', 50);
+</script>
+
+</body>
+</html>
