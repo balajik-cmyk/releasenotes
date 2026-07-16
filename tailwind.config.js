@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: '#111111',
+        ink: '#302E2D',
         muted: '#666666',
         faint: '#999999',
         border: '#EEEEEE',
@@ -15,8 +15,7 @@ export default {
         },
       },
       fontFamily: {
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
-        sans: ['Inter', '-apple-system', 'sans-serif'],
+        sans: ['"Hanken Grotesk"', '-apple-system', 'sans-serif'],
       },
       borderRadius: {
         sm: '6px',

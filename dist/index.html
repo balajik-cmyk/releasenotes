@@ -4,50 +4,59 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>What's New — Birdeye</title>
+<link rel="icon" type="image/png" href="/images/birdeye-mark.png?v=2">
+<link rel="apple-touch-icon" href="/images/birdeye-mark.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/assets/index-DkB4HzhF.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-COvyiTm9.css">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/index-v2zAWQIw.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BqEfKmmI.css">
 </head>
 <body class="bg-white text-ink font-sans antialiased leading-relaxed">
 
 <!-- ── NAV ── -->
-<nav class="sticky top-0 z-[100] flex h-[60px] items-center justify-between border-b border-border bg-[rgba(255,255,255,0.92)] backdrop-blur-md px-10 max-[680px]:px-5">
+<nav class="sticky top-0 z-[100] flex h-[60px] items-center justify-between border-b border-border/80 bg-[rgba(255,255,255,0.85)] backdrop-blur-md px-10 max-[680px]:px-5">
   <a class="inline-flex items-center no-underline" href="#" aria-label="birdeye">
     <img src="/images/birdeye-mark.png?v=2" alt="birdeye" width="28" height="28" class="h-7 w-7 object-contain" />
   </a>
-  <a class="rounded-[8px] bg-ink px-[18px] py-2 text-[13px] font-medium text-white no-underline transition-colors hover:bg-[#333]" href="https://preprod-ent-reportingapp.birdeye.com/dashboard/home" target="_blank">Preview →</a>
+  <a
+    id="nav-preview"
+    class="nav-preview rounded-[8px] bg-ink px-[18px] py-2 text-[13px] font-medium text-white no-underline transition-all duration-200 hover:bg-[#333]"
+    href="https://preprod-ent-reportingapp.birdeye.com/dashboard/home"
+    target="_blank"
+    hidden
+  >Preview →</a>
 </nav>
 
 <!-- ── HERO ── -->
-<section class="mx-auto max-w-[760px] px-6 pb-[72px] pt-24 text-center max-[680px]:pb-12 max-[680px]:pt-16">
-  <div class="mb-7 inline-flex items-center gap-1.5 rounded-full bg-ink px-3.5 py-[5px] text-[11px] font-semibold uppercase tracking-[0.8px] text-white">
-    <span class="inline-block h-1.5 w-1.5 rounded-full bg-[#4ade80]"></span>
-    Coming August 2026 · AI Native
-  </div>
-  <h1 class="mb-5 font-serif text-[clamp(40px,6vw,64px)] font-bold leading-[1.1] tracking-[-1.5px] text-ink">
-    Beautifully<br>yet simple,<br><em class="italic text-brand">yet modern.</em>
-  </h1>
-  <p class="mx-auto mb-9 max-w-[520px] text-lg font-normal leading-[1.7] text-muted">
-    We're refreshing the Birdeye dashboard — cleaner, more modern, and fully aligned with AI Native. Same powerful features, elevated experience.
-  </p>
-  <div class="flex flex-wrap justify-center gap-3">
-    <a class="rounded-[8px] bg-brand px-[26px] py-[13px] text-[15px] font-medium text-white no-underline transition-opacity hover:opacity-[0.88]" href="https://preprod-ent-reportingapp.birdeye.com/dashboard/home" target="_blank">Preview the new look →</a>
+<section class="hero-wash relative overflow-hidden">
+  <div class="hero-glow pointer-events-none absolute inset-0" aria-hidden="true"></div>
+  <div class="relative mx-auto flex max-w-[760px] flex-col items-center px-6 pb-20 pt-20 text-center max-[680px]:pb-14 max-[680px]:pt-14">
+    <div class="hero-fade hero-fade-2 mb-6 inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/70 px-3.5 py-1.5 text-[12px] font-medium tracking-[0.02px] text-ink shadow-[0_1px_2px_rgba(48,46,45,0.06)] backdrop-blur-sm">
+      <span class="inline-block h-1.5 w-1.5 rounded-full bg-brand"></span>
+      Coming August 2026 · AI Native
+    </div>
+    <h1 class="hero-fade hero-fade-3 mb-9 max-w-[640px] text-[clamp(36px,5.5vw,56px)] font-semibold leading-[1.12] tracking-[-1.2px] text-ink">
+      A cleaner Birdeye.<br />Built for how you work next.
+    </h1>
+    <a
+      id="hero-preview"
+      class="hero-fade hero-fade-5 rounded-[8px] bg-brand px-7 py-[14px] text-[15px] font-medium text-white no-underline shadow-[0_8px_24px_rgba(15,98,254,0.28)] transition-opacity hover:opacity-[0.92]"
+      href="https://preprod-ent-reportingapp.birdeye.com/dashboard/home"
+      target="_blank"
+    >Preview the new look →</a>
   </div>
 </section>
-
-<hr class="mx-auto max-w-[900px] border-0 border-t border-border">
 
 <!-- ── CHANGES ── -->
 <div class="mx-auto max-w-[900px] px-6 pb-20" id="changes">
 
   <!-- ── 1. SYSTEM CTA ── -->
-  <div class="grid grid-cols-1 items-start gap-4 border-t border-border py-12 md:grid-cols-[200px_1fr] md:gap-12">
+  <div class="reveal grid grid-cols-1 items-start gap-4 py-12 md:grid-cols-[200px_1fr] md:gap-12" data-reveal>
     <div>
       <span class="mb-3 inline-block rounded-full bg-[#E3F2FD] px-2.5 py-[3px] text-[11px] font-semibold tracking-[0.3px] text-[#1565C0]">Settings CTA</span>
     </div>
     <div>
-      <h2 class="mb-2.5 font-serif text-[22px] font-bold tracking-[-0.3px] text-ink">Settings CTAs move from top to bottom</h2>
+      <h2 class="mb-2.5 font-sans text-[22px] font-bold tracking-[-0.3px] text-ink">Settings CTAs move from top to bottom</h2>
       <p class="mb-4 text-[15px] leading-[1.75] text-muted">
         Settings actions leave the crowded top header and settle into the <strong class="font-medium text-ink">left-rail footer</strong>. Create and Ask stay up top; settings, notifications, and profile move down.
       </p>
@@ -81,12 +90,12 @@
   </div>
 
   <!-- ── DRAWER IMPROVEMENTS ── -->
-  <div class="grid grid-cols-1 items-start gap-4 border-t border-border py-12 md:grid-cols-[200px_1fr] md:gap-12">
+  <div class="reveal grid grid-cols-1 items-start gap-4 py-12 md:grid-cols-[200px_1fr] md:gap-12" data-reveal>
     <div>
       <span class="mb-3 inline-block rounded-full bg-[#E8EAF6] px-2.5 py-[3px] text-[11px] font-semibold tracking-[0.3px] text-[#3949AB]">Drawer</span>
     </div>
     <div>
-      <h2 class="mb-2.5 font-serif text-[22px] font-bold tracking-[-0.3px] text-ink">Drawer improvements</h2>
+      <h2 class="mb-2.5 font-sans text-[22px] font-bold tracking-[-0.3px] text-ink">Drawer improvements</h2>
       <p class="mb-4 text-[15px] leading-[1.75] text-muted">
         Drawers open with clearer hierarchy, tighter spacing, and smoother motion — easier to scan and act without losing context of the page behind.
       </p>
@@ -141,12 +150,12 @@
   </div>
 
   <!-- ── L1 NAVIGATION ── -->
-  <div class="grid grid-cols-1 items-start gap-4 border-t border-border py-12 md:grid-cols-[200px_1fr] md:gap-12">
+  <div class="reveal grid grid-cols-1 items-start gap-4 py-12 md:grid-cols-[200px_1fr] md:gap-12" data-reveal>
     <div>
       <span class="mb-3 inline-block rounded-full bg-[#E0F2F1] px-2.5 py-[3px] text-[11px] font-semibold tracking-[0.3px] text-[#00695C]">Navigation</span>
     </div>
     <div>
-      <h2 class="mb-2.5 font-serif text-[22px] font-bold tracking-[-0.3px] text-ink">Expand or collapse the left menu — same everywhere</h2>
+      <h2 class="mb-2.5 font-sans text-[22px] font-bold tracking-[-0.3px] text-ink">Expand or collapse the left menu — same everywhere</h2>
       <p class="mb-4 text-[15px] leading-[1.75] text-muted">
         Open for full labels when you need them. Close for more screen space. One control, same behavior in every module.
       </p>
@@ -201,12 +210,12 @@
   </div>
 
   <!-- ── BRANDING APPEARANCE ── -->
-  <div class="grid grid-cols-1 items-start gap-4 border-t border-border py-12 md:grid-cols-[200px_1fr] md:gap-12">
+  <div class="reveal grid grid-cols-1 items-start gap-4 py-12 md:grid-cols-[200px_1fr] md:gap-12" data-reveal>
     <div>
       <span class="mb-3 inline-block rounded-full bg-[#EDEFFF] px-2.5 py-[3px] text-[11px] font-semibold tracking-[0.3px] text-[#4C5BD4]">Branding</span>
     </div>
     <div>
-      <h2 class="mb-4 font-serif text-[22px] font-bold tracking-[-0.3px] text-ink">Branding looks softer — blue moves from the top strip into the app background</h2>
+      <h2 class="mb-4 font-sans text-[22px] font-bold tracking-[-0.3px] text-ink">Branding looks softer — blue moves from the top strip into the app background</h2>
       <div class="relative aspect-[1024/639] w-full cursor-ew-resize touch-none select-none overflow-hidden rounded-lg border border-border bg-white shadow-[0_4px_24px_rgba(0,0,0,0.10)]" id="s6">
         <div class="relative block h-full w-full">
           <img src="/images/branding-shell-after.png" width="1024" height="639" alt="After: soft brand blue shell background" class="pointer-events-none h-full w-full object-cover object-left-top" />
@@ -225,12 +234,12 @@
   </div>
 
   <!-- ── BRAND BLUE ── -->
-  <div class="grid grid-cols-1 items-start gap-4 border-t border-border py-12 md:grid-cols-[200px_1fr] md:gap-12">
+  <div class="reveal grid grid-cols-1 items-start gap-4 py-12 md:grid-cols-[200px_1fr] md:gap-12" data-reveal>
     <div>
       <span class="mb-3 inline-block rounded-full bg-[#EDF5FF] px-2.5 py-[3px] text-[11px] font-semibold tracking-[0.3px] text-[#0F62FE]">Brand blue</span>
     </div>
     <div>
-      <h2 class="mb-2.5 font-serif text-[22px] font-bold tracking-[-0.3px] text-ink">From Material blue to IBM Blue</h2>
+      <h2 class="mb-2.5 font-sans text-[22px] font-bold tracking-[-0.3px] text-ink">From Material blue to IBM Blue</h2>
       <p class="mb-4 text-[15px] leading-[1.75] text-muted">
         <strong class="font-medium text-ink">#1976D2</strong> → <strong class="font-medium text-ink">#0F62FE</strong> on buttons, links, focus, and accents.
       </p>
@@ -274,12 +283,12 @@
   </div>
 
   <!-- ── TYPOGRAPHY ── -->
-  <div class="grid grid-cols-1 items-start gap-4 border-t border-border py-12 md:grid-cols-[200px_1fr] md:gap-12">
+  <div class="reveal grid grid-cols-1 items-start gap-4 py-12 md:grid-cols-[200px_1fr] md:gap-12" data-reveal>
     <div>
       <span class="mb-3 inline-block rounded-full bg-brand-tint px-2.5 py-[3px] text-[11px] font-semibold tracking-[0.3px] text-brand">Typography</span>
     </div>
     <div>
-      <h2 class="mb-2.5 font-serif text-[22px] font-bold tracking-[-0.3px] text-ink">Inter becomes the primary typeface</h2>
+      <h2 class="mb-2.5 font-sans text-[22px] font-bold tracking-[-0.3px] text-ink">Inter becomes the primary typeface</h2>
       <p class="mb-4 text-[15px] leading-[1.75] text-muted">
         We're moving to <strong class="font-medium text-ink">Inter</strong> as the primary typeface across the entire dashboard. The previous mixed type stack is being retired.
       </p>
