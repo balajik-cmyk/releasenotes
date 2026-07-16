@@ -82,3 +82,4 @@ function initSlider(sid, bid, biid, did, gid, startPct, orientation) {
 }
 
 initSlider('s5', 'b5', 'bi5', 'd5', 'g5', 50);
+initSlider('s6', 'b6', 'bi6', 'd6', 'g6', 50);
