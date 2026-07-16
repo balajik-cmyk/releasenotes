@@ -1,5 +1,15 @@
+const siteNav = document.getElementById('site-nav');
 const navPreview = document.getElementById('nav-preview');
 const heroPreview = document.getElementById('hero-preview');
+
+if (siteNav) {
+  const updateNavFrost = () => {
+    siteNav.classList.toggle('is-frosted', window.scrollY > 8);
+  };
+
+  updateNavFrost();
+  window.addEventListener('scroll', updateNavFrost, { passive: true });
+}
 
 if (navPreview && heroPreview) {
   const showNavPreview = (show) => {

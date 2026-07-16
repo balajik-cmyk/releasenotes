@@ -7,13 +7,13 @@
 <link rel="icon" type="image/png" href="/images/birdeye-mark.png?v=2">
 <link rel="apple-touch-icon" href="/images/birdeye-mark.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/src/style.css">
 </head>
 <body class="bg-white text-ink font-sans antialiased leading-relaxed">
 
 <!-- ── NAV ── -->
-<nav class="sticky top-0 z-[100] flex h-[60px] items-center justify-between border-b border-border/80 bg-[rgba(255,255,255,0.85)] backdrop-blur-md px-10 max-[680px]:px-5">
+<nav id="site-nav" class="site-nav fixed inset-x-0 top-0 z-[100] flex h-[60px] items-center justify-between border-b border-transparent px-10 max-[680px]:px-5">
   <a class="inline-flex items-center no-underline" href="#" aria-label="birdeye">
     <img src="/images/birdeye-mark.png?v=2" alt="birdeye" width="28" height="28" class="h-7 w-7 object-contain" />
   </a>
@@ -27,12 +27,12 @@
 </nav>
 
 <!-- ── HERO ── -->
-<section class="hero-wash relative overflow-hidden">
+<section class="hero-wash relative overflow-hidden pt-[60px]">
   <div class="hero-glow pointer-events-none absolute inset-0" aria-hidden="true"></div>
   <div class="relative mx-auto flex max-w-[920px] flex-col items-center px-6 pb-20 pt-20 text-center max-[680px]:pb-14 max-[680px]:pt-14">
     <div class="hero-fade hero-fade-2 mb-6 inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/70 px-3.5 py-1.5 text-[12px] font-medium tracking-[0.02px] text-ink shadow-[0_1px_2px_rgba(48,46,45,0.06)] backdrop-blur-sm">
       <span class="inline-block h-1.5 w-1.5 rounded-full bg-brand"></span>
-      Coming August 2026 · AI Native
+      Coming August 2026
     </div>
     <h1 class="hero-fade hero-fade-3 rn-h1 mb-9 max-w-[900px] font-sans text-ink">
       A cleaner Birdeye.<br />
@@ -69,7 +69,7 @@
         </ul>
       </div>
       <div class="mt-2">
-        <div class="media-frame relative cursor-ew-resize touch-none select-none overflow-hidden rounded-lg border border-border bg-white shadow-[0_4px_24px_rgba(0,0,0,0.10)]" id="s5">
+        <div class="media-frame relative cursor-ew-resize touch-none select-none overflow-hidden rounded-lg border border-border bg-white" id="s5">
           <!-- AFTER (base) -->
           <div class="absolute inset-0">
             <img src="/images/system-cta-after.png" width="1728" height="1065" alt="After: quieter top bar; settings, notifications, and profile in the left-rail footer" class="pointer-events-none h-full w-full object-cover object-left-top" />
@@ -80,9 +80,9 @@
           </div></div>
           <div class="absolute top-3 left-3 z-[5] rounded-full bg-black/50 px-2.5 py-1 text-[11px] font-semibold tracking-[0.5px] text-white pointer-events-none">Before</div>
           <div class="absolute top-3 right-3 z-[5] rounded-full bg-black/50 px-2.5 py-1 text-[11px] font-semibold tracking-[0.5px] text-white pointer-events-none">After</div>
-          <div class="pointer-events-none absolute top-0 bottom-0 z-10 w-0.5 -translate-x-1/2 bg-[#f6f1e7]" id="d5"></div>
-          <div class="absolute top-1/2 z-20 flex h-[52px] w-[52px] -translate-x-1/2 -translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full bg-[#f6f1e7] shadow-[0_8px_24px_rgba(30,20,10,0.25)] outline-none transition-shadow hover:shadow-[0_10px_32px_rgba(30,20,10,0.35)] focus-visible:shadow-[0_8px_24px_rgba(30,20,10,0.25),0_0_0_3px_#0F62FE]" id="g5" role="slider" tabindex="0" aria-label="Settings CTA comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 5L3 12L8 19" stroke="#7a6a55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 5L21 12L16 19" stroke="#7a6a55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="pointer-events-none absolute top-0 bottom-0 z-10 w-0.5 -translate-x-1/2 bg-brand" id="d5"></div>
+          <div class="absolute top-1/2 z-20 flex h-[52px] w-[52px] -translate-x-1/2 -translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full bg-brand shadow-[0_8px_24px_rgba(15,98,254,0.35)] outline-none transition-shadow hover:shadow-[0_10px_32px_rgba(15,98,254,0.45)] focus-visible:shadow-[0_8px_24px_rgba(15,98,254,0.35),0_0_0_3px_rgba(15,98,254,0.35)]" id="g5" role="slider" tabindex="0" aria-label="Settings CTA comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 5L3 12L8 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 5L21 12L16 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
         </div>
       </div>
@@ -128,7 +128,7 @@
             class="rounded-[8px] px-4 py-2 text-[13px] font-medium text-muted transition-colors hover:text-ink"
           >After</button>
         </div>
-        <div class="overflow-hidden rounded-lg border border-border bg-[#111] shadow-[0_4px_24px_rgba(0,0,0,0.10)]">
+        <div class="overflow-hidden rounded-lg border border-border bg-[#111]">
           <div class="media-frame relative">
             <video
               data-compare-player
@@ -188,7 +188,7 @@
             class="rounded-[8px] px-4 py-2 text-[13px] font-medium text-muted transition-colors hover:text-ink"
           >After</button>
         </div>
-        <div class="overflow-hidden rounded-lg border border-border bg-[#111] shadow-[0_4px_24px_rgba(0,0,0,0.10)]">
+        <div class="overflow-hidden rounded-lg border border-border bg-[#111]">
           <div class="media-frame relative">
             <video
               data-compare-player
@@ -215,8 +215,8 @@
       <span class="mb-3 inline-block rounded-full bg-[#EDEFFF] px-2.5 py-[3px] text-[11px] font-semibold tracking-[0.3px] text-[#4C5BD4]">Branding</span>
     </div>
     <div>
-      <h2 class="rn-h2 font-sans">Branding looks softer — blue moves from the top strip into the app background</h2>
-      <div class="media-frame relative cursor-ew-resize touch-none select-none overflow-hidden rounded-lg border border-border bg-white shadow-[0_4px_24px_rgba(0,0,0,0.10)]" id="s6">
+      <h2 class="rn-h2 font-sans">Branding looks softer — your brand color moves from the top strip into the app background</h2>
+      <div class="media-frame relative cursor-ew-resize touch-none select-none overflow-hidden rounded-lg border border-border bg-white" id="s6">
         <div class="absolute inset-0">
           <img src="/images/branding-shell-after.png" width="1024" height="639" alt="After: soft brand blue shell background" class="pointer-events-none h-full w-full object-cover object-left-top" />
         </div>
@@ -225,9 +225,9 @@
         </div></div>
         <div class="absolute top-3 left-3 z-[5] rounded-full bg-black/50 px-2.5 py-1 text-[11px] font-semibold tracking-[0.5px] text-white pointer-events-none">Before</div>
         <div class="absolute top-3 right-3 z-[5] rounded-full bg-black/50 px-2.5 py-1 text-[11px] font-semibold tracking-[0.5px] text-white pointer-events-none">After</div>
-        <div class="pointer-events-none absolute top-0 bottom-0 z-10 w-0.5 -translate-x-1/2 bg-[#f6f1e7]" id="d6"></div>
-        <div class="absolute top-1/2 z-20 flex h-[52px] w-[52px] -translate-x-1/2 -translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full bg-[#f6f1e7] shadow-[0_8px_24px_rgba(30,20,10,0.25)] outline-none transition-shadow hover:shadow-[0_10px_32px_rgba(30,20,10,0.35)] focus-visible:shadow-[0_8px_24px_rgba(30,20,10,0.25),0_0_0_3px_#0F62FE]" id="g6" role="slider" tabindex="0" aria-label="Branding appearance comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 5L3 12L8 19" stroke="#7a6a55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 5L21 12L16 19" stroke="#7a6a55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="pointer-events-none absolute top-0 bottom-0 z-10 w-0.5 -translate-x-1/2 bg-brand" id="d6"></div>
+        <div class="absolute top-1/2 z-20 flex h-[52px] w-[52px] -translate-x-1/2 -translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full bg-brand shadow-[0_8px_24px_rgba(15,98,254,0.35)] outline-none transition-shadow hover:shadow-[0_10px_32px_rgba(15,98,254,0.45)] focus-visible:shadow-[0_8px_24px_rgba(15,98,254,0.35),0_0_0_3px_rgba(15,98,254,0.35)]" id="g6" role="slider" tabindex="0" aria-label="Branding appearance comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 5L3 12L8 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 5L21 12L16 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
       </div>
     </div>
@@ -252,7 +252,7 @@
           <li><strong class="font-medium text-ink">One system blue.</strong> Same accent across product and AI Native.</li>
         </ul>
       </div>
-      <div class="media-frame flex flex-col overflow-hidden rounded-lg border border-border bg-white shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
+      <div class="media-frame flex flex-col overflow-hidden rounded-lg border border-border bg-white">
         <div class="grid min-h-0 flex-1 grid-cols-1 sm:grid-cols-2">
           <div class="flex flex-col border-b border-border p-5 sm:border-b-0 sm:border-r">
             <div class="mb-3 text-[11px] font-semibold uppercase tracking-[1.5px] text-faint">Before</div>
@@ -292,32 +292,13 @@
       <p class="rn-body mb-6">
         We're moving to <strong class="font-medium text-ink">Inter</strong> as the primary typeface across the entire dashboard. The previous mixed type stack is being retired.
       </p>
-      <div class="mb-6 rounded-[10px] border border-border bg-[#F7F7F7] p-4">
+      <div class="rounded-[10px] border border-border bg-[#F7F7F7] p-4">
         <div class="mb-1.5 text-[11px] font-bold uppercase tracking-[1.5px] text-faint">Why design needs this</div>
         <ul class="rn-note m-0 list-disc space-y-2 pl-5">
           <li><strong class="font-medium text-ink">One voice.</strong> A single UI typeface keeps nav, headings, and body copy in the same rhythm.</li>
           <li><strong class="font-medium text-ink">Sharper hierarchy.</strong> Inter’s weights make dense dashboards easier to scan without increasing font size.</li>
           <li><strong class="font-medium text-ink">AI Native alignment.</strong> A modern, consistent typeface keeps the dashboard visually continuous with the next product tier.</li>
         </ul>
-      </div>
-      <div class="media-frame flex flex-col overflow-hidden rounded-lg border border-border bg-white shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
-        <div class="flex min-h-0 flex-1 flex-col justify-center gap-6 p-6 sm:p-8" style="font-family: Inter, system-ui, sans-serif">
-          <div class="text-[clamp(40px,7vw,72px)] font-semibold leading-none tracking-[-2px] text-ink">
-            Inter
-          </div>
-          <div class="max-w-[34ch] text-[18px] leading-[1.5] text-muted">
-            One typeface for nav, headings, and body — clearer hierarchy across the dashboard.
-          </div>
-          <div class="flex flex-wrap items-end gap-x-8 gap-y-3 text-ink">
-            <span class="text-[13px] font-normal">Regular 400</span>
-            <span class="text-[13px] font-medium">Medium 500</span>
-            <span class="text-[13px] font-semibold">Semibold 600</span>
-            <span class="text-[15px] font-bold">Bold 700</span>
-          </div>
-        </div>
-        <div class="shrink-0 border-t border-border bg-[#F7F7F7] px-5 py-3.5 text-[13px] text-muted">
-          <strong class="font-medium text-ink">Primary typeface</strong> across the entire dashboard.
-        </div>
       </div>
     </div>
   </div>
