@@ -81,6 +81,4 @@ function initSlider(sid, bid, biid, did, gid, startPct, orientation) {
   window.addEventListener('resize', () => set(p));
 }
 
-initSlider('s3', 'b3', 'bi3', 'd3', 'g3', 50);
-initSlider('s4', 'b4', 'bi4', 'd4', 'g4', 50);
 initSlider('s5', 'b5', 'bi5', 'd5', 'g5', 50);

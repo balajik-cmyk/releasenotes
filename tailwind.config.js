@@ -10,8 +10,8 @@ export default {
         border: '#EEEEEE',
         surface: '#F7F7F7',
         brand: {
-          DEFAULT: '#0043CE',
-          tint: '#EEF2FF',
+          DEFAULT: '#0F62FE',
+          tint: '#EDF5FF',
         },
       },
       fontFamily: {
@@ -22,6 +22,7 @@ export default {
         sm: '6px',
         DEFAULT: '10px',
         lg: '14px',
+        button: '8px',
       },
     },
   },
