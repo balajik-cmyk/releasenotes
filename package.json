@@ -13,7 +13,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "seed": "node scripts/seed.js",
-    "seed:force": "node scripts/seed.js --force"
+    "seed:force": "node scripts/seed.js --force",
+    "hash-passcode": "node scripts/hash-passcode.js"
   },
   "dependencies": {
     "@vercel/blob": "^2.6.1",

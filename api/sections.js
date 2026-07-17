@@ -1,5 +1,6 @@
 import { sendJson, sendError, methodNotAllowed, readJsonBody } from './_lib/http.js';
 import { hasGoogleCredentials } from './_lib/config.js';
+import { requireAdmin } from './_lib/auth.js';
 import {
   getRawSections,
   createSection,
@@ -9,6 +10,7 @@ import {
 } from './_lib/store.js';
 
 export default async function handler(req, res) {
+  if (!requireAdmin(req, res)) return;
   if (!hasGoogleCredentials()) {
     return sendError(res, 500, 'Google credentials are not configured on the server.');
   }

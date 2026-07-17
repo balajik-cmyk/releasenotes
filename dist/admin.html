@@ -7,21 +7,42 @@
 <link rel="icon" type="image/png" href="/images/birdeye-mark.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/assets/admin-BGMEBgeS.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/style-rkdxeMAh.js">
-  <link rel="stylesheet" crossorigin href="/assets/style-CCWZmY19.css">
+  <script type="module" crossorigin src="/assets/admin-oEJLfcN3.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/style-ddSgYISO.js">
+  <link rel="stylesheet" crossorigin href="/assets/style-CSwmkmTA.css">
 </head>
 <body class="bg-[#FAFAFA] text-ink font-sans antialiased leading-relaxed">
+
+<!-- Passcode gate -->
+<div id="admin-lock" class="fixed inset-0 z-[200] flex items-center justify-center bg-[#FAFAFA] px-6">
+  <form id="unlock-form" class="w-full max-w-[400px] rounded-[14px] border border-border bg-white p-7 shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+    <div class="mb-5 flex items-center gap-2">
+      <img src="/images/birdeye-mark.png?v=2" alt="birdeye" width="24" height="24" class="h-6 w-6 object-contain" />
+      <span class="text-[15px] font-semibold">What's New · Admin</span>
+    </div>
+    <h1 class="mb-1 text-[20px] font-semibold">Enter passcode</h1>
+    <p class="mb-5 text-[14px] text-muted">Admin tools are locked. Unlock with your passcode to edit release notes.</p>
+    <label class="mb-4 block">
+      <span class="mb-1 block text-[12px] font-medium text-muted">Passcode</span>
+      <input id="unlock-passcode" type="password" autocomplete="current-password" required class="w-full rounded-[8px] border border-border px-3 py-2.5 text-[14px] outline-none focus:border-brand" />
+    </label>
+    <button type="submit" class="w-full rounded-[8px] bg-brand px-4 py-2.5 text-[14px] font-medium text-white transition-opacity hover:opacity-90">Unlock</button>
+    <p id="unlock-error" class="mt-3 text-[13px] text-[#C0392B]" hidden></p>
+  </form>
+</div>
 
 <header class="sticky top-0 z-40 flex h-[60px] items-center justify-between border-b border-border bg-white/90 px-8 backdrop-blur-md max-[680px]:px-4">
   <div class="flex items-center gap-2">
     <img src="/images/birdeye-mark.png?v=2" alt="birdeye" width="24" height="24" class="h-6 w-6 object-contain" />
     <span class="text-[15px] font-semibold">What's New · Admin</span>
   </div>
-  <a href="/" target="_blank" class="rounded-[8px] border border-border px-3.5 py-2 text-[13px] font-medium text-ink no-underline transition-colors hover:bg-[#F2F2F2]">View live page →</a>
+  <div class="flex items-center gap-2">
+    <button id="lock-admin" type="button" class="rounded-[8px] border border-border px-3.5 py-2 text-[13px] font-medium transition-colors hover:bg-[#F2F2F2]">Lock</button>
+    <a href="/" target="_blank" class="rounded-[8px] border border-border px-3.5 py-2 text-[13px] font-medium text-ink no-underline transition-colors hover:bg-[#F2F2F2]">View live page →</a>
+  </div>
 </header>
 
-<main class="mx-auto max-w-[920px] px-6 py-10 max-[680px]:px-4">
+<main id="admin-app" class="mx-auto max-w-[920px] px-6 py-10 max-[680px]:px-4" hidden>
 
   <!-- Connection panel -->
   <section class="mb-8 rounded-[12px] border border-border bg-white p-6">

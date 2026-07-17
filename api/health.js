@@ -1,10 +1,12 @@
 import { sendJson, sendError, methodNotAllowed } from './_lib/http.js';
 import { hasGoogleCredentials, hasBlobToken, getServiceAccountEmail } from './_lib/config.js';
+import { requireAdmin } from './_lib/auth.js';
 import { getActiveSheetId, getSpreadsheetMeta } from './_lib/sheets.js';
 
 // Connection/health check used by the admin "Fetch Tabs" button.
 export default async function handler(req, res) {
   if (req.method !== 'GET') return methodNotAllowed(res, ['GET']);
+  if (!requireAdmin(req, res)) return;
   if (!hasGoogleCredentials()) {
     return sendError(res, 500, 'Google credentials are not configured on the server.', {
       hasBlob: hasBlobToken(),

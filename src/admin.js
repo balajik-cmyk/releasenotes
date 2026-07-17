@@ -1,18 +1,43 @@
-// Admin editor for the Google Sheets-backed What's New page. No auth (prototype).
+// Admin editor for the Google Sheets-backed What's New page.
+// Passcode unlock issues a signed session token; plaintext is never stored in the repo.
 
+const TOKEN_KEY = 'wn_admin_token';
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 
+function getToken() {
+  return sessionStorage.getItem(TOKEN_KEY) || '';
+}
+
+function setToken(token) {
+  if (token) sessionStorage.setItem(TOKEN_KEY, token);
+  else sessionStorage.removeItem(TOKEN_KEY);
+}
+
+function authHeaders(extra = {}) {
+  const token = getToken();
+  return {
+    Accept: 'application/json',
+    ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    ...extra,
+  };
+}
+
 async function api(path, options = {}) {
-  const res = await fetch(path, {
-    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    ...options,
+  const headers = authHeaders({
+    'Content-Type': 'application/json',
+    ...(options.headers || {}),
   });
+  const res = await fetch(path, { ...options, headers });
   let data = null;
   try {
     data = await res.json();
   } catch {
     data = null;
+  }
+  if (res.status === 401) {
+    lockAdmin(data?.error || 'Admin unlock required.');
+    throw new Error(data?.error || 'Admin unlock required.');
   }
   if (!res.ok) {
     const msg = data?.error || `Request failed (${res.status})`;
@@ -21,6 +46,61 @@ async function api(path, options = {}) {
     throw new Error(msg + detail + errors);
   }
   return data;
+}
+
+function showUnlockError(message) {
+  const el = $('#unlock-error');
+  if (!message) {
+    el.hidden = true;
+    el.textContent = '';
+    return;
+  }
+  el.hidden = false;
+  el.textContent = message;
+}
+
+function lockAdmin(message = '') {
+  setToken('');
+  $('#admin-lock').hidden = false;
+  $('#admin-app').hidden = true;
+  showUnlockError(message);
+  $('#unlock-passcode').value = '';
+  $('#unlock-passcode').focus();
+}
+
+function unlockAdminUi() {
+  $('#admin-lock').hidden = true;
+  $('#admin-app').hidden = false;
+  showUnlockError('');
+}
+
+async function unlockWithPasscode(passcode) {
+  const res = await fetch('/api/admin/unlock', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({ passcode }),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data?.error || 'Unlock failed');
+  setToken(data.token);
+  unlockAdminUi();
+  await bootstrapEditor();
+}
+
+async function tryResumeSession() {
+  const token = getToken();
+  if (!token) return false;
+  const res = await fetch('/api/admin/unlock', {
+    headers: authHeaders(),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || !data.unlocked) {
+    setToken('');
+    return false;
+  }
+  unlockAdminUi();
+  await bootstrapEditor();
+  return true;
 }
 
 // ── Connection panel ─────────────────────────────────────────────────
@@ -174,7 +254,6 @@ async function deleteSection(section) {
   await loadSections();
 }
 
-// Map a raw sheet row (snake_case) to the camelCase payload the API accepts.
 function serializeExisting(section) {
   return {
     id: section.id,
@@ -270,7 +349,6 @@ function updateMediaVisibility() {
     : type === 'video_compare'
       ? 'Videos'
       : 'Images';
-  // Media tool buttons (upload/import) make no sense for color hex values.
   $$('[data-media-tools]').forEach((t) => (t.style.display = isColor ? 'none' : 'flex'));
   $$('[data-preview]').forEach((p) => (p.textContent = ''));
 }
@@ -313,10 +391,14 @@ async function uploadFile(field, file) {
   try {
     const res = await fetch(`/api/media/upload?filename=${encodeURIComponent(file.name)}`, {
       method: 'POST',
-      headers: { 'Content-Type': file.type || 'application/octet-stream' },
+      headers: authHeaders({ 'Content-Type': file.type || 'application/octet-stream' }),
       body: file,
     });
     const data = await res.json();
+    if (res.status === 401) {
+      lockAdmin(data?.error || 'Admin unlock required.');
+      throw new Error(data?.error || 'Admin unlock required.');
+    }
     if (!res.ok) throw new Error(data?.detail || data?.error || 'Upload failed');
     $(`[data-field="${field}"]`).value = data.url;
     preview.textContent = 'Uploaded ✓';
@@ -347,7 +429,25 @@ function escapeAttr(str) {
   return escapeHtml(str).replace(/"/g, '&quot;');
 }
 
+async function bootstrapEditor() {
+  await loadSettings();
+  await Promise.all([loadHero(), loadSections()]);
+  await fetchTabs();
+}
+
 // ── wire up ──────────────────────────────────────────────────────────
+$('#unlock-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  showUnlockError('');
+  const passcode = $('#unlock-passcode').value;
+  try {
+    await unlockWithPasscode(passcode);
+  } catch (err) {
+    showUnlockError(err.message);
+  }
+});
+
+$('#lock-admin').addEventListener('click', () => lockAdmin());
 $('#fetch-tabs').addEventListener('click', fetchTabs);
 $('#save-sheet').addEventListener('click', saveSheet);
 $('#save-hero').addEventListener('click', saveHero);
@@ -369,7 +469,6 @@ $$('[data-import]').forEach((btn) =>
 );
 
 (async function init() {
-  await loadSettings();
-  await Promise.all([loadHero(), loadSections()]);
-  await fetchTabs();
+  const resumed = await tryResumeSession();
+  if (!resumed) lockAdmin();
 })();

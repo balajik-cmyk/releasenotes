@@ -1,5 +1,6 @@
 import { sendJson, sendError, methodNotAllowed, readRawBody } from '../_lib/http.js';
 import { hasBlobToken } from '../_lib/config.js';
+import { requireAdmin } from '../_lib/auth.js';
 import { storeBuffer, MEDIA_LIMITS } from '../_lib/media.js';
 
 // Raw-body upload: the client sends the file bytes as the request body with the
@@ -9,6 +10,7 @@ export const config = { api: { bodyParser: false } };
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return methodNotAllowed(res, ['POST']);
+  if (!requireAdmin(req, res)) return;
   if (!hasBlobToken()) {
     return sendError(res, 500, 'BLOB_READ_WRITE_TOKEN is not configured on the server.');
   }

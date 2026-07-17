@@ -1,5 +1,6 @@
 import { sendJson, sendError, methodNotAllowed, readJsonBody } from './_lib/http.js';
 import { hasGoogleCredentials, getDefaultSheetId, TABS } from './_lib/config.js';
+import { requireAdmin } from './_lib/auth.js';
 import { readTab, writeTab, clearActiveSheetCache, getSpreadsheetMeta } from './_lib/sheets.js';
 
 function extractSheetId(input) {
@@ -14,6 +15,7 @@ function extractSheetId(input) {
 // The active-sheet override is stored in the env (default) sheet so we always
 // know where to look, regardless of which sheet is currently active.
 export default async function handler(req, res) {
+  if (!requireAdmin(req, res)) return;
   if (!hasGoogleCredentials()) {
     return sendError(res, 500, 'Google credentials are not configured on the server.');
   }
