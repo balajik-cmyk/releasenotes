@@ -1,3 +1,4 @@
+// Before/after video toggle. Operates on [data-compare-video] roots.
 function initCompareVideo(root) {
   const video = root.querySelector('[data-compare-player]');
   const badge = root.querySelector('[data-compare-badge]');
@@ -50,4 +51,6 @@ function initCompareVideo(root) {
   io.observe(video);
 }
 
-document.querySelectorAll('[data-compare-video]').forEach(initCompareVideo);
+export function initCompareVideos(root = document) {
+  root.querySelectorAll('[data-compare-video]').forEach(initCompareVideo);
+}
