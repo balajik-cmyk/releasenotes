@@ -1,5 +1,5 @@
 import { put } from '@vercel/blob';
-import { hasBlobToken } from './config.js';
+import { getBlobToken, hasBlobToken } from './config.js';
 
 const MAX_BYTES = 50 * 1024 * 1024; // 50 MB
 const ALLOWED_PREFIXES = ['image/', 'video/'];
@@ -32,6 +32,7 @@ export async function storeBuffer(buffer, { filename, contentType }) {
     access: 'public',
     contentType: contentType || 'application/octet-stream',
     addRandomSuffix: true,
+    token: getBlobToken(),
   });
   return { url: result.url, contentType: contentType || '', bytes: buffer.length };
 }

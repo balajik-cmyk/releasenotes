@@ -1,4 +1,18 @@
 // Before/after video toggle. Operates on [data-compare-video] roots.
+function setVideoSrc(video, src) {
+  const url = String(src || '').trim();
+  video.removeAttribute('src');
+  video.innerHTML = '';
+  if (!url) return;
+  const mp4 = document.createElement('source');
+  mp4.src = url;
+  mp4.type = 'video/mp4';
+  const qt = document.createElement('source');
+  qt.src = url;
+  qt.type = 'video/quicktime';
+  video.append(mp4, qt);
+}
+
 function initCompareVideo(root) {
   const video = root.querySelector('[data-compare-player]');
   const badge = root.querySelector('[data-compare-badge]');
@@ -28,7 +42,7 @@ function initCompareVideo(root) {
 
     if (badge) badge.textContent = label;
     video.setAttribute('aria-label', `${name} ${label.toLowerCase()}`);
-    video.querySelectorAll('source').forEach((s) => s.setAttribute('src', src));
+    setVideoSrc(video, src);
     video.load();
     if (inView) {
       video.addEventListener('loadeddata', () => playSafe(), { once: true });

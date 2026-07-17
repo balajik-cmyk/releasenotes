@@ -55,6 +55,23 @@ export function hasGoogleCredentials() {
   return Boolean(getServiceAccountEmail() && getPrivateKey());
 }
 
+function normalizeEnvValue(raw) {
+  let v = String(raw || '').trim();
+  // Strip accidental KEY= prefix when the whole .env line was pasted as the value.
+  v = v.replace(/^BLOB_READ_WRITE_TOKEN=/, '');
+  // Strip wrapping quotes from dashboard pastes.
+  if ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))) {
+    v = v.slice(1, -1).trim();
+  }
+  // Recover the token if extra text was pasted around it.
+  const match = v.match(/vercel_blob_rw_[A-Za-z0-9_]+/);
+  return match ? match[0] : v.trim();
+}
+
+export function getBlobToken() {
+  return normalizeEnvValue(process.env.BLOB_READ_WRITE_TOKEN);
+}
+
 export function hasBlobToken() {
-  return Boolean(process.env.BLOB_READ_WRITE_TOKEN);
+  return Boolean(getBlobToken());
 }

@@ -31,9 +31,24 @@ function richText(target, str) {
   });
 }
 
-function isSafeHttp(url) {
+function resolveMediaUrl(url) {
+  const raw = String(url || '').trim();
+  if (!raw) return '';
+  if (raw.startsWith('/')) return raw;
   try {
-    const u = new URL(url, window.location.origin);
+    const u = new URL(raw, window.location.origin);
+    if (u.protocol === 'http:' || u.protocol === 'https:') return raw;
+  } catch {
+    return '';
+  }
+  return '';
+}
+
+function isSafeHttp(url) {
+  const raw = String(url || '').trim();
+  if (!raw) return false;
+  try {
+    const u = new URL(raw);
     return u.protocol === 'http:' || u.protocol === 'https:';
   } catch {
     return false;
@@ -67,7 +82,7 @@ function renderImageCompare(section) {
 
   const afterLayer = el('div', 'absolute inset-0');
   const afterImg = el('img', 'pointer-events-none h-full w-full object-cover object-left-top', {
-    src: isSafeHttp(section.afterMedia) ? section.afterMedia : '',
+    src: resolveMediaUrl(section.afterMedia),
     alt: section.afterLabel || 'After',
   });
   afterLayer.appendChild(afterImg);
@@ -75,7 +90,7 @@ function renderImageCompare(section) {
   const clip = el('div', 'absolute inset-0 overflow-hidden', { 'data-before-clip': true });
   const inner = el('div', 'absolute inset-0', { 'data-before-inner': true });
   const beforeImg = el('img', 'pointer-events-none h-full w-full object-cover object-left-top', {
-    src: isSafeHttp(section.beforeMedia) ? section.beforeMedia : '',
+    src: resolveMediaUrl(section.beforeMedia),
     alt: section.beforeLabel || 'Before',
   });
   inner.appendChild(beforeImg);
@@ -109,12 +124,18 @@ function renderImageCompare(section) {
   return wrap;
 }
 
-function videoSources(src) {
-  const frag = document.createDocumentFragment();
-  const type = /\.mov($|\?)/i.test(src) ? 'video/quicktime' : 'video/mp4';
-  const s1 = el('source', null, { src, type });
-  frag.appendChild(s1);
-  return frag;
+function attachVideoSrc(video, src) {
+  const url = resolveMediaUrl(src);
+  // Prefer <source> children only — setting both video.src and <source> can leave
+  // Chromium stuck on an empty/black QuickTime frame.
+  video.removeAttribute('src');
+  video.innerHTML = '';
+  if (!url) return;
+  // Prefer mp4 MIME first so Chromium attempts playback; Safari still accepts .mov.
+  const mp4 = el('source', null, { src: url, type: 'video/mp4' });
+  const qt = el('source', null, { src: url, type: 'video/quicktime' });
+  video.append(mp4, qt);
+  video.load();
 }
 
 function renderVideoCompare(section) {
@@ -128,8 +149,8 @@ function renderVideoCompare(section) {
     'aria-label': `${section.label || section.title} comparison`,
   });
 
-  const beforeSafe = isSafeHttp(section.beforeMedia) ? section.beforeMedia : '';
-  const afterSafe = isSafeHttp(section.afterMedia) ? section.afterMedia : '';
+  const beforeSafe = resolveMediaUrl(section.beforeMedia);
+  const afterSafe = resolveMediaUrl(section.afterMedia);
 
   const tabBefore = el('button', 'rounded-[8px] bg-ink px-4 py-2 text-[13px] font-medium text-white transition-colors', {
     type: 'button',
@@ -162,7 +183,12 @@ function renderVideoCompare(section) {
     preload: 'auto',
     'aria-label': `${section.label || section.title} before`,
   });
-  video.appendChild(videoSources(beforeSafe));
+  // Properties (not only attributes) are required for muted autoplay policies.
+  video.muted = true;
+  video.defaultMuted = true;
+  video.playsInline = true;
+  video.setAttribute('webkit-playsinline', '');
+  attachVideoSrc(video, beforeSafe);
   const badge = el('div', 'pointer-events-none absolute left-3 top-3 z-[2] rounded-full bg-black/50 px-2.5 py-1 text-[11px] font-semibold tracking-[0.5px] text-white', {
     'data-compare-badge': true,
   });
@@ -303,7 +329,8 @@ function renderHero(site) {
     h1.textContent = '';
     h1.appendChild(document.createTextNode(site.headlineLine1));
     h1.appendChild(el('br'));
-    const span = el('span', 'whitespace-nowrap');
+    // Keep line 2 on one line from md up; allow wrap on narrow phones
+    const span = el('span', 'md:whitespace-nowrap');
     span.textContent = site.headlineLine2;
     h1.appendChild(span);
   }

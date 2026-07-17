@@ -17,10 +17,20 @@
 
 /* Type scale aligned to notion.com/releases */
 .rn-h1 {
-  font-size: clamp(40px, 7vw, 64px);
+  font-size: clamp(32px, 8.2vw, 64px);
   font-weight: 700;
-  line-height: 1;
-  letter-spacing: -2.125px;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  max-width: 100%;
+  text-wrap: balance;
+}
+
+@media (min-width: 681px) {
+  .rn-h1 {
+    font-size: clamp(40px, 7vw, 64px);
+    line-height: 1;
+    letter-spacing: -2.125px;
+  }
 }
 
 .rn-h2 {
