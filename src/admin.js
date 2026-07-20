@@ -148,38 +148,10 @@ async function saveSheet() {
   try {
     await api('/api/settings', { method: 'PUT', body: JSON.stringify({ sheetUrl }) });
     setConn('Sheet saved. Reloading data…', 'ok');
-    await Promise.all([loadHero(), loadSections()]);
+    await loadSections();
     await fetchTabs();
   } catch (err) {
     setConn(err.message, 'err');
-  }
-}
-
-// ── Hero ─────────────────────────────────────────────────────────────
-async function loadHero() {
-  try {
-    const { config } = await api('/api/site-config');
-    $$('[data-hero]').forEach((input) => {
-      input.value = config[input.dataset.hero] || '';
-    });
-  } catch (err) {
-    $('#hero-status').textContent = err.message;
-  }
-}
-
-async function saveHero() {
-  const config = {};
-  $$('[data-hero]').forEach((input) => {
-    config[input.dataset.hero] = input.value;
-  });
-  const status = $('#hero-status');
-  status.textContent = 'Saving…';
-  try {
-    await api('/api/site-config', { method: 'PUT', body: JSON.stringify({ config }) });
-    status.textContent = 'Saved.';
-    setTimeout(() => (status.textContent = ''), 2000);
-  } catch (err) {
-    status.textContent = err.message;
   }
 }
 
@@ -431,7 +403,7 @@ function escapeAttr(str) {
 
 async function bootstrapEditor() {
   await loadSettings();
-  await Promise.all([loadHero(), loadSections()]);
+  await loadSections();
   await fetchTabs();
 }
 
@@ -450,7 +422,6 @@ $('#unlock-form').addEventListener('submit', async (e) => {
 $('#lock-admin').addEventListener('click', () => lockAdmin());
 $('#fetch-tabs').addEventListener('click', fetchTabs);
 $('#save-sheet').addEventListener('click', saveSheet);
-$('#save-hero').addEventListener('click', saveHero);
 $('#add-section').addEventListener('click', () => openDialog(null));
 $('#add-bullet').addEventListener('click', () => $('#bullets-list').appendChild(bulletRow()));
 $('#dialog-cancel').addEventListener('click', () => dialog.close());

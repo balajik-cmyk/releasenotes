@@ -11,13 +11,8 @@ function toNum(v, fallback = 0) {
   return Number.isFinite(n) ? n : fallback;
 }
 
-// Build the normalized content object the public page consumes.
-export function buildContent({ siteConfigRows, sectionRows, bulletRows }) {
-  const config = {};
-  for (const row of siteConfigRows) {
-    if (row.key) config[String(row.key).trim()] = row.value;
-  }
-
+// Build the normalized content object the public page consumes (sections only).
+export function buildContent({ sectionRows, bulletRows }) {
   const bulletsBySection = new Map();
   for (const b of bulletRows) {
     const sid = String(b.section_id || '').trim();
@@ -62,17 +57,7 @@ export function buildContent({ siteConfigRows, sectionRows, bulletRows }) {
     .filter((s) => s.visible)
     .sort((a, b) => a.order - b.order);
 
-  return {
-    site: {
-      badgeText: config.badge_text || '',
-      headlineLine1: config.headline_line1 || '',
-      headlineLine2: config.headline_line2 || '',
-      ctaLabel: config.cta_label || '',
-      ctaUrl: config.cta_url || '',
-      pageTitle: config.page_title || "What's New",
-    },
-    sections,
-  };
+  return { sections };
 }
 
 // Validate a section payload coming from the admin editor. Returns

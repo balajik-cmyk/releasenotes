@@ -13,8 +13,11 @@ export async function readAll(sheetId) {
 
 export async function getContent() {
   const sheetId = await getActiveSheetId();
-  const data = await readAll(sheetId);
-  return buildContent(data);
+  const [sectionRows, bulletRows] = await Promise.all([
+    readTab(sheetId, TABS.sections).catch(() => []),
+    readTab(sheetId, TABS.bullets).catch(() => []),
+  ]);
+  return buildContent({ sectionRows, bulletRows });
 }
 
 // Raw section rows (unfiltered, includes hidden) for the admin editor.

@@ -44,17 +44,6 @@ function resolveMediaUrl(url) {
   return '';
 }
 
-function isSafeHttp(url) {
-  const raw = String(url || '').trim();
-  if (!raw) return false;
-  try {
-    const u = new URL(raw);
-    return u.protocol === 'http:' || u.protocol === 'https:';
-  } catch {
-    return false;
-  }
-}
-
 function hexToRgba(hex, alpha) {
   const m = String(hex).trim().replace('#', '');
   if (!/^([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(m)) return `rgba(15,98,254,${alpha})`;
@@ -317,53 +306,33 @@ function renderSection(section, isLast) {
   return row;
 }
 
-// ── hero ─────────────────────────────────────────────────────────────
-function renderHero(site) {
-  const badgeText = document.getElementById('hero-badge-text');
-  const badge = document.getElementById('hero-badge');
-  if (badgeText) badgeText.textContent = site.badgeText || '';
-  if (badge) badge.hidden = !site.badgeText;
-
-  const h1 = document.getElementById('hero-headline');
-  if (h1) {
-    h1.textContent = '';
-    h1.appendChild(document.createTextNode(site.headlineLine1));
-    h1.appendChild(el('br'));
-    // Keep line 2 on one line from md up; allow wrap on narrow phones
-    const span = el('span', 'md:whitespace-nowrap');
-    span.textContent = site.headlineLine2;
-    h1.appendChild(span);
-  }
-
-  const cta = document.getElementById('hero-preview');
-  if (cta) {
-    cta.textContent = site.ctaLabel || 'Preview →';
-    if (isSafeHttp(site.ctaUrl)) cta.href = site.ctaUrl;
-  }
-  const navCta = document.getElementById('nav-preview');
-  if (navCta && isSafeHttp(site.ctaUrl)) navCta.href = site.ctaUrl;
-
-  if (site.pageTitle) document.title = site.pageTitle;
+// ── boot ─────────────────────────────────────────────────────────────
+function showChangesMessage(message) {
+  const container = document.getElementById('changes');
+  if (!container) return;
+  container.setAttribute('aria-busy', 'false');
+  container.replaceChildren();
+  const p = el('p', 'py-12 text-center text-[15px] text-muted');
+  p.textContent = message;
+  container.appendChild(p);
 }
 
-// ── boot ─────────────────────────────────────────────────────────────
 async function load() {
   const container = document.getElementById('changes');
-  const statusEl = document.getElementById('page-status');
+  initNavChrome();
 
   try {
     const res = await fetch('/api/content', { headers: { Accept: 'application/json' } });
     if (!res.ok) throw new Error(`Content request failed (${res.status})`);
     const data = await res.json();
 
-    renderHero(data.site || {});
-
-    container.textContent = '';
     if (!data.sections || !data.sections.length) {
-      if (statusEl) statusEl.hidden = false;
+      showChangesMessage('No updates published yet.');
       return;
     }
-    if (statusEl) statusEl.hidden = true;
+
+    container.setAttribute('aria-busy', 'false');
+    container.textContent = '';
 
     data.sections.forEach((section, i) => {
       container.appendChild(renderSection(section, i === data.sections.length - 1));
@@ -373,14 +342,9 @@ async function load() {
     initCompareVideos(container);
     initReveal(container);
   } catch (err) {
-    if (statusEl) {
-      statusEl.hidden = false;
-      statusEl.textContent = 'Could not load the latest updates. Please refresh.';
-    }
+    showChangesMessage('Could not load the latest updates. Please refresh.');
     // eslint-disable-next-line no-console
     console.error(err);
-  } finally {
-    initNavChrome();
   }
 }
 

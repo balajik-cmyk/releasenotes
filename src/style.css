@@ -126,25 +126,37 @@ html {
     radial-gradient(circle at 80% 20%, rgba(15, 98, 254, 0.06), transparent 35%);
 }
 
-@keyframes heroFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 1px 2px rgba(48, 46, 45, 0.06);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02px;
+  line-height: 1;
+  color: var(--ink);
 }
 
-.hero-fade {
-  opacity: 0;
-  animation: heroFadeUp var(--motion-duration) var(--motion-ease) forwards;
+.hero-badge-dot {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--brand);
 }
 
-.hero-fade-2 { animation-delay: 0.04s; }
-.hero-fade-3 { animation-delay: 0.1s; }
-.hero-fade-5 { animation-delay: 0.16s; }
+.hero-badge-label {
+  flex-shrink: 0;
+}
 
 /* Section scroll reveal — quiet, once */
 .reveal {
@@ -212,7 +224,6 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-fade,
   .reveal {
     opacity: 1;
     animation: none;
